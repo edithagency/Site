@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-deep:   #2b616b;
+  --color-mid:    #66a2ad;
+  --color-yellow: #f4db75;
+  --color-cream:  #e7e3dd;
+}
+
+html {
+  background-color: #e7e3dd;
+}
+
+body {
+  background-color: #e7e3dd;
+  color: #2b616b;
+  font-family: var(--font-body), sans-serif;
+}
+
+button,
+a[class*="rounded-full"] {
+  font-weight: 700;
+}
+
+.highlight {
+  animation: highlightPulse 1.5s ease-out forwards;
+  border-radius: 16px;
+}
+
+@keyframes highlightPulse {
+  0%   { box-shadow: 0 0 0 0px  rgba(255, 200, 0, 0.7); border-radius: 16px; }
+  50%  { box-shadow: 0 0 0 12px rgba(255, 200, 0, 0.3); border-radius: 16px; }
+  100% { box-shadow: 0 0 0 0px  rgba(255, 200, 0, 0);   border-radius: 16px; }
+}
+
+@keyframes phoneFloat {
+  0%   { transform: perspective(1000px) rotateY(-8deg) rotateX(2deg); }
+  50%  { transform: perspective(1000px) rotateY(8deg)  rotateX(-2deg); }
+  100% { transform: perspective(1000px) rotateY(-8deg) rotateX(2deg); }
+}
+
+.phone-mockup {
+  animation: phoneFloat 4s ease-in-out infinite;
+}
+
+.phone-mockup:hover {
+  animation-play-state: paused;
+}
+
+@keyframes screenFloat {
+  0%   { transform: perspective(1000px) rotateY(-8deg) rotateX(2deg); }
+  50%  { transform: perspective(1000px) rotateY(8deg)  rotateX(-2deg); }
+  100% { transform: perspective(1000px) rotateY(-8deg) rotateX(2deg); }
+}
+
+.screen-mockup {
+  animation: screenFloat 4s ease-in-out infinite;
+}
+
+.screen-mockup:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollScreen {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-60%); }
+}
+
+.screen-content {
+  animation: scrollScreen 20s linear infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+.page-hero-banner {
+  @apply h-[320px] md:h-[420px];
+}
+
+.crisp-image {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(1.05) saturate(1.05);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply text-brand-mid uppercase tracking-[0.2em] text-[10px] font-body font-medium;
+  }
+
+  .pill {
+    @apply border border-brand-deep text-brand-deep text-[11px] font-body tracking-[0.1em] uppercase px-3 py-1 rounded-full;
+  }
+}
