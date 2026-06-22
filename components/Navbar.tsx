@@ -88,28 +88,35 @@ export default function Navbar() {
           <button
             onClick={() => setOpen(!open)}
             aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className="md:hidden flex flex-col justify-center items-center gap-[6px] w-10 h-10 rounded-full shrink-0 transition-colors duration-300"
-            style={{ background: transparent ? '#ffffff' : '#2b616b' }}
+            className="md:hidden flex flex-col justify-center gap-[7px] w-8 h-8 shrink-0"
+            style={{
+              filter: transparent
+                ? 'drop-shadow(0 0 1px rgba(0,0,0,0.9)) drop-shadow(0 0 1px rgba(0,0,0,0.9)) drop-shadow(0 1px 2px rgba(0,0,0,0.7))'
+                : 'none',
+            }}
           >
             <span
-              className="block h-0.5 w-5 origin-center transition-transform duration-300"
+              className="block rounded-full origin-center transition-transform duration-300"
               style={{
-                background: transparent ? '#2b616b' : '#e7e3dd',
-                transform: open ? 'translateY(7px) rotate(45deg)' : 'none',
+                height: 3,
+                background: transparent ? 'white' : '#2b616b',
+                transform: open ? 'translateY(10px) rotate(45deg)' : 'none',
               }}
             />
             <span
-              className="block h-0.5 w-5 transition-opacity duration-300"
+              className="block rounded-full transition-opacity duration-300"
               style={{
-                background: transparent ? '#2b616b' : '#e7e3dd',
+                height: 3,
+                background: transparent ? 'white' : '#2b616b',
                 opacity: open ? 0 : 1,
               }}
             />
             <span
-              className="block h-0.5 w-5 origin-center transition-transform duration-300"
+              className="block rounded-full origin-center transition-transform duration-300"
               style={{
-                background: transparent ? '#2b616b' : '#e7e3dd',
-                transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none',
+                height: 3,
+                background: transparent ? 'white' : '#2b616b',
+                transform: open ? 'translateY(-10px) rotate(-45deg)' : 'none',
               }}
             />
           </button>
