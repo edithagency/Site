@@ -10,13 +10,6 @@ export interface UGCItem {
 
 export const ugcItems: UGCItem[] = [
   {
-    id: 'la-belle-en-folie',
-    brand: 'La Belle en Folie',
-    category: 'Restauration',
-    videoUrl: 'https://www.youtube.com/embed/jRQakJEC04g?rel=0',
-    description: 'Bordeaux, France',
-  },
-  {
     id: 'canope',
     brand: 'Canopé',
     category: 'Restauration',
@@ -144,6 +137,13 @@ export const ugcItems: UGCItem[] = [
     brand: 'Les Bûcherons',
     category: 'Beauté & Bien-être',
     videoUrl: 'https://www.youtube.com/embed/MSGzTlCQWbE?rel=0',
+    description: 'Bordeaux, France',
+  },
+  {
+    id: 'la-belle-en-folie',
+    brand: 'La Belle en Folie',
+    category: 'Restauration',
+    videoUrl: 'https://www.youtube.com/embed/jRQakJEC04g?rel=0',
     description: 'Bordeaux, France',
   },
   {
