@@ -246,8 +246,8 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <p className="eyebrow mb-4">On se lance ?</p>
             <TypewriterHeading
-              className="text-brand-deep leading-[1.05]"
-              style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(30px, 4vw, 50px)' }}
+              className="text-brand-deep leading-[1.05] block"
+              style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(30px, 4vw, 50px)', minHeight: '2.1em' }}
               segments={[
                 { text: 'Un projet en tête ?\n' },
                 { text: 'Donnons-lui le bon ' },

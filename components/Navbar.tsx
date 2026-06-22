@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -17,6 +17,7 @@ export default function Navbar() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     function onScroll() {
@@ -29,10 +30,27 @@ export default function Navbar() {
   // Fermer le menu mobile au changement de page
   useEffect(() => { setOpen(false) }, [pathname])
 
+  // Fermer le menu mobile au clic/tap en dehors de la navbar
+  useEffect(() => {
+    if (!open) return
+    function onOutside(e: MouseEvent | TouchEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onOutside)
+    document.addEventListener('touchstart', onOutside)
+    return () => {
+      document.removeEventListener('mousedown', onOutside)
+      document.removeEventListener('touchstart', onOutside)
+    }
+  }, [open])
+
   const transparent = !scrolled && !open
 
   return (
     <nav
+      ref={navRef}
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-400"
       style={{
         background: transparent ? 'transparent' : 'rgba(255,255,255,0.97)',
@@ -71,6 +89,7 @@ export default function Navbar() {
             onClick={() => setOpen(!open)}
             aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
             className="md:hidden flex flex-col justify-center gap-[6px] w-8 h-8 shrink-0"
+            style={{ filter: transparent ? 'drop-shadow(0 1px 3px rgba(0,0,0,0.55))' : 'none' }}
           >
             <span
               className="block h-0.5 origin-center transition-transform duration-300"
