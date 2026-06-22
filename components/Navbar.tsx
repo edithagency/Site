@@ -89,7 +89,11 @@ export default function Navbar() {
             onClick={() => setOpen(!open)}
             aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
             className="md:hidden flex flex-col justify-center gap-[6px] w-8 h-8 shrink-0"
-            style={{ filter: transparent ? 'drop-shadow(0 1px 3px rgba(0,0,0,0.55))' : 'none' }}
+            style={{
+              filter: transparent
+                ? 'drop-shadow(0 0 1px rgba(0,0,0,0.9)) drop-shadow(0 0 1px rgba(0,0,0,0.9)) drop-shadow(0 1px 3px rgba(0,0,0,0.6))'
+                : 'none',
+            }}
           >
             <span
               className="block h-0.5 origin-center transition-transform duration-300"
