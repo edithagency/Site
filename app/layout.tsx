@@ -38,14 +38,22 @@ const theSeasons = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Sea More Agency | Freelance Communication Bordeaux & Paris',
+  metadataBase: new URL('https://seamoreagency.com'),
+  title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
   description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
   keywords: ['agence communication Bordeaux', 'freelance communication Paris', 'branding Bordeaux', 'social media Bordeaux Paris', 'création contenu vidéo', 'community management Bordeaux'],
   openGraph: {
-    title: 'Sea More Agency | Freelance Communication Bordeaux & Paris',
+    title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
     description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
     locale: 'fr_FR',
     type: 'website',
+    images: ['/images/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
+    description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
+    images: ['/images/og-image.png'],
   },
   other: {
     'geo.region': 'FR-33',

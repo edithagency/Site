@@ -9,13 +9,20 @@ import FAQAccordion from '@/components/FAQAccordion'
 import FeaturedContent from '@/components/FeaturedContent'
 
 export const metadata: Metadata = {
-  title: 'Freelance Communication & Vidéo à Bordeaux et Paris | Sea More Agency',
+  title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
   description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
   openGraph: {
-    title: 'Freelance Communication & Vidéo à Bordeaux et Paris | Sea More Agency',
+    title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
     description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
     locale: 'fr_FR',
     type: 'website',
+    images: ['/images/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
+    description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
+    images: ['/images/og-image.png'],
   },
 }
 
