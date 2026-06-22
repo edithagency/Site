@@ -43,10 +43,10 @@ export default function Footer() {
         {/* Réseaux sociaux */}
         <div className="flex items-center gap-5">
           <Link
-            href="https://www.instagram.com/edith.agency"
+            href="https://www.instagram.com/seamoreagency/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram @edith.agency"
+            aria-label="Instagram @seamoreagency"
             className="flex items-center gap-2 text-brand-deep/50 hover:text-brand-deep transition-colors group"
           >
             <IconInstagram />

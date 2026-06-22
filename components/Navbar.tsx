@@ -124,10 +124,9 @@ export default function Navbar() {
             href="/contact"
             className="hidden md:inline-flex items-center font-body text-[11px] uppercase tracking-[0.12em] px-5 py-2.5 rounded-full transition-all duration-300"
             style={{
-              background: transparent ? 'rgba(255,255,255,0.15)' : '#2b616b',
-              color: transparent ? 'white' : '#e7e3dd',
-              border: transparent ? '1px solid rgba(255,255,255,0.4)' : '1px solid transparent',
-              backdropFilter: transparent ? 'blur(4px)' : 'none',
+              background: transparent ? '#ffffff' : '#2b616b',
+              color: transparent ? '#2b616b' : '#e7e3dd',
+              border: '1px solid transparent',
             }}
           >
             Me contacter

@@ -23,7 +23,7 @@ function IconInstagram() {
 }
 
 const socials = [
-  { label: 'Instagram', handle: '@edith.agency', href: 'https://www.instagram.com/edith.agency', icon: <IconInstagram /> },
+  { label: 'Instagram', handle: '@seamoreagency', href: 'https://www.instagram.com/seamoreagency/', icon: <IconInstagram /> },
 ]
 
 export default function ContactPage() {
