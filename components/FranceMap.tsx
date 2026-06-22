@@ -2,6 +2,7 @@
 
 import 'leaflet/dist/leaflet.css'
 import { useEffect, useRef, useState } from 'react'
+import TypewriterHeading from './TypewriterHeading'
 
 /* ──────────────────────────────────────────────────────────────────────────
    POINTS DE LA CARTE
@@ -16,11 +17,14 @@ const CLIENTS = [
   { id: 1,  nom: 'Tigermilk',                   ville: 'Bordeaux, France',              lat: 44.8414, lng: -0.5752, type: 'vidéo',  lien: '/creation-de-contenu#tigermilk',                 youtubeId: '7rmG4xVU_wc' },
   { id: 2,  nom: 'Fufu Ramen',                  ville: 'Bordeaux, France',              lat: 44.8378, lng: -0.5734, type: 'vidéo',  lien: '/creation-de-contenu#fufu-ramen',                youtubeId: 'HjzK-FiCOLY' },
   { id: 3,  nom: 'Les Bûcherons',               ville: 'Bordeaux, France',              lat: 44.8412, lng: -0.5701, type: 'client', lien: '/projets/bucherons-barber',          youtubeId: 'cA7L6fpHlIY' },
-  { id: 4,  nom: 'Prod Daiki',                  ville: 'Bordeaux, France',              lat: 44.8378, lng: -0.5792, type: 'client', lien: '/projets/prod-daiki',                youtubeId: '', photoUrl: '' },
+  { id: 4,  nom: 'Prod Daiki',                  ville: 'Bordeaux, France',              lat: 44.8378, lng: -0.5792, type: 'client', lien: '/projets/prod-daiki',                youtubeId: '', photoUrl: '/images/clients/prod-daiki-card.jpg' },
   { id: 5,  nom: 'Brique House',                ville: 'Bordeaux, France',              lat: 44.8489, lng: -0.5734, type: 'vidéo',  lien: '/creation-de-contenu#brique-house',              youtubeId: 'F_RIqdHRppM' },
   { id: 6,  nom: 'Centre Commercial Mériadeck', ville: 'Bordeaux, France',              lat: 44.8378, lng: -0.5812, type: 'vidéo',  lien: '/creation-de-contenu#meriadeck',                 youtubeId: 'YaSk1hCU52w' },
   { id: 7,  nom: 'Quiz Room Paris',             ville: 'Paris, France',                 lat: 48.8534, lng: 2.3389,  type: 'vidéo',  lien: '/creation-de-contenu#quizz-room',                youtubeId: 'KWCNliP9neQ' },
   { id: 8,  nom: 'Dopio Malto',                 ville: 'Bordeaux, France',              lat: 44.8523, lng: -0.6012, type: 'vidéo',  lien: '/creation-de-contenu#dopio-malto',               youtubeId: 'Gdsu5btorHM' },
+  { id: 34, nom: 'SUPERDRY',                    ville: 'Bordeaux, France',              lat: 44.8442, lng: -0.5728, type: 'vidéo',  lien: '/creation-de-contenu#superdry',                  youtubeId: 'J_k-8tIOTUk' },
+  { id: 35, nom: 'OXXY Club',                   ville: 'Bordeaux, France',              lat: 44.8355, lng: -0.5765, type: 'vidéo',  lien: '/creation-de-contenu#oxxy',                      youtubeId: '2zp7arQTa4U' },
+  { id: 39, nom: 'La Belle en Folie',           ville: 'Bordeaux, France',              lat: 44.8401, lng: -0.5756, type: 'vidéo',  lien: '/creation-de-contenu#la-belle-en-folie',         youtubeId: 'jRQakJEC04g' },
   // ── BAYONNE ───────────────────────────────────────────────────────────
   { id: 9,  nom: 'Les Burgers de Colette',      ville: 'Bayonne, France',               lat: 43.4929, lng: -1.4749, type: 'vidéo',  lien: '/creation-de-contenu#burgers-de-colette',        youtubeId: 'ol6a83A61Gw' },
   // ── PARIS ─────────────────────────────────────────────────────────────
@@ -36,9 +40,9 @@ const CLIENTS = [
   { id: 19, nom: 'Senza Nome',                  ville: 'Paris, France',                 lat: 48.8601, lng: 2.3412,  type: 'vidéo',  lien: '/creation-de-contenu#senza-nome',                youtubeId: '0JQnnAlIfjM' },
   { id: 20, nom: 'Time Tripper',                ville: 'Paris, France',                 lat: 48.8389, lng: 2.3189,  type: 'vidéo',  lien: '/creation-de-contenu#time-tripper',              youtubeId: 'w7eybFbsOAQ' },
   { id: 21, nom: "Muzi'Quiz",                   ville: 'Paris, France',                 lat: 48.8712, lng: 2.3489,  type: 'vidéo',  lien: '/creation-de-contenu#muziquiz',                  youtubeId: 's9XRlXO0pSg' },
-  { id: 22, nom: 'La Consigne',                 ville: 'Paris, France',                 lat: 48.8445, lng: 2.3234,  type: 'photos', lien: '/creation-de-contenu#la-consigne',               youtubeId: '', photoUrl: '' },
+  { id: 22, nom: 'La Consigne',                 ville: 'Paris, France',                 lat: 48.8445, lng: 2.3234,  type: 'photos', lien: '/creation-de-contenu#la-consigne',               youtubeId: '', photoUrl: '/images/ugc/la-consigne.jpg' },
   // ── BARCELONE ─────────────────────────────────────────────────────────
-  { id: 23, nom: 'Itinéraire sur Mesure',       ville: 'Barcelone, Espagne',            lat: 41.3851, lng: 2.1734,  type: 'client', lien: '/projets/itineraire-sur-mesure',                      youtubeId: '', photoUrl: '' },
+  { id: 23, nom: 'Itinéraire sur Mesure',       ville: 'Barcelone, Espagne',            lat: 41.3851, lng: 2.1734,  type: 'client', lien: '/projets/itineraire-sur-mesure',                      youtubeId: '', photoUrl: '/images/clients/itineraire-card.jpg' },
   { id: 29, nom: 'Itinéraire sur Mesure',       ville: 'Barcelone, Espagne',            lat: 41.3862, lng: 2.1718,  type: 'vidéo',  lien: '/creation-de-contenu#itineraire-sur-mesure', youtubeId: 'R2o8j4PAsuE' },
   { id: 30, nom: 'Itinéraire sur Mesure',       ville: 'Barcelone, Espagne',            lat: 41.3840, lng: 2.1750,  type: 'vidéo',  lien: '/creation-de-contenu#itineraire-sur-mesure', youtubeId: 'THA_3oHWZMw' },
   { id: 31, nom: 'Itinéraire sur Mesure',       ville: 'Barcelone, Espagne',            lat: 41.3875, lng: 2.1760,  type: 'vidéo',  lien: '/creation-de-contenu#itineraire-sur-mesure', youtubeId: 'Z0IHgLn5Akk' },
@@ -53,6 +57,11 @@ const CLIENTS = [
   { id: 28, nom: 'Merci Internet',              ville: 'Paris, France',                 lat: 48.8823, lng: 2.3489,  type: 'vidéo',  lien: '/creation-de-contenu#merci-internet',            youtubeId: '5q_Qv_EgZy0' },
   { id: 32, nom: 'Armelle Crêperie',           ville: 'Paris, France',                 lat: 48.8678, lng: 2.3445,  type: 'vidéo',  lien: '/creation-de-contenu#armelle-creperie',          youtubeId: 'Kog2u-FPI1A' },
   { id: 33, nom: 'Quartier Général',           ville: 'Paris, France',                 lat: 48.8512, lng: 2.3434,  type: 'vidéo',  lien: '/creation-de-contenu#quartier-general',          youtubeId: 'WPw6Ees54Dc' },
+  { id: 38, nom: 'GARANCIA',                   ville: 'Paris, France',                 lat: 48.8530, lng: 2.2611,  type: 'vidéo',  lien: '/creation-de-contenu#garancia',                  youtubeId: 'EKR_xMVPx7M' },
+  // ── MOUGINS ───────────────────────────────────────────────────────────
+  { id: 37, nom: 'Luxéol',                     ville: 'Mougins, France',               lat: 43.6004, lng: 6.9989,  type: 'vidéo',  lien: '/creation-de-contenu#luxeol',                    youtubeId: 'Ka8LJPUqw6s' },
+  // ── LITUANIE ──────────────────────────────────────────────────────────
+  { id: 36, nom: 'BURGA',                      ville: 'Kaunas, Lituanie',              lat: 54.8985, lng: 23.9036, type: 'vidéo',  lien: '/creation-de-contenu#burga',                     youtubeId: 'Fhpk2IL4RvA' },
 ]
 
 /* Vue initiale — Europe + Maghreb */
@@ -69,6 +78,8 @@ const CITY_ZOOM: Record<string, number> = {
   'Florence, Italie':           13,
   'Loro Ciuffenna, Italie':     13,
   'Madrid, Espagne':            13,
+  'Mougins, France':            14,
+  'Kaunas, Lituanie':           13,
 }
 
 /* Couleur et taille des marqueurs par type */
@@ -79,72 +90,77 @@ const TYPE_COLOR: Record<string, string> = {
 }
 const TYPE_SIZE: Record<string, number> = {
   'vidéo':  12,
-  'client': 17,
+  'client': 15,
   'photos': 12,
 }
 
-const CREAM = '#e7e3dd'
+const CREAM = '#ffffff'
 
 /* ── CSS injecté dans la page ── */
 const MAP_STYLES = `
+  /* Mer bleu pâle, terres blanc cassé */
+  .leaflet-tile {
+    filter: saturate(1.5) brightness(1.08) contrast(0.95);
+  }
+
   .map-pin {
     border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.5);
     animation: pulse-pin 2.8s ease-out infinite;
   }
   .map-pin-client {
     border-radius: 50%;
-    border: 2.5px solid rgba(255,255,255,0.45);
+    border: 2.5px solid rgba(255,255,255,0.6);
     animation: pulse-client 2.8s ease-out infinite;
   }
   @keyframes pulse-pin {
-    0%   { box-shadow: 0 0 0 0   rgba(102,162,173,0.65); }
-    70%  { box-shadow: 0 0 0 10px rgba(102,162,173,0);   }
-    100% { box-shadow: 0 0 0 0   rgba(102,162,173,0);    }
+    0%   { box-shadow: 0 0 0 0   rgba(43,97,107,0.55); }
+    70%  { box-shadow: 0 0 0 10px rgba(43,97,107,0);   }
+    100% { box-shadow: 0 0 0 0   rgba(43,97,107,0);    }
   }
   @keyframes pulse-client {
-    0%   { box-shadow: 0 0 0 0   rgba(244,219,117,0.8); }
+    0%   { box-shadow: 0 0 0 0   rgba(244,219,117,0.9); }
     70%  { box-shadow: 0 0 0 16px rgba(244,219,117,0);  }
     100% { box-shadow: 0 0 0 0   rgba(244,219,117,0);   }
   }
 
-  /* Popup */
+  /* Popup — fond crème */
   .mp-wrap .leaflet-popup-content-wrapper {
-    background: #1a2e32 !important;
-    border: 1px solid rgba(255,255,255,0.09) !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(43,97,107,0.15) !important;
     border-radius: 14px !important;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.55) !important;
+    box-shadow: 0 16px 48px rgba(43,97,107,0.18) !important;
     padding: 0 !important;
     overflow: hidden !important;
   }
   .mp-wrap .leaflet-popup-content { margin: 0 !important; }
   .mp-wrap .leaflet-popup-tip-container { display: none !important; }
   .mp-wrap .leaflet-popup-close-button {
-    color: rgba(231,227,221,0.35) !important;
+    color: rgba(43,97,107,0.4) !important;
     font-size: 22px !important;
     top: 6px !important; right: 10px !important;
     padding: 0 !important; z-index: 10 !important; line-height: 1 !important;
   }
-  .mp-wrap .leaflet-popup-close-button:hover { color: rgba(231,227,221,0.7) !important; }
+  .mp-wrap .leaflet-popup-close-button:hover { color: #2b616b !important; }
 
   .mp-body { padding: 18px 22px 16px; min-width: 200px; }
   .mp-badge {
     display: inline-block; padding: 3px 10px; border-radius: 999px;
-    font-family: var(--font-body); font-size: 9px; letter-spacing: 0.18em;
+    font-family: var(--font-poppins); font-size: 9px; letter-spacing: 0.18em;
     text-transform: uppercase; margin-bottom: 10px;
   }
   .mp-city {
-    font-family: var(--font-body); font-size: 9px;
+    font-family: var(--font-poppins); font-size: 9px;
     letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(231,227,221,0.35); margin: 0 0 5px;
+    color: rgba(43,97,107,0.4); margin: 0 0 5px;
   }
   .mp-name {
-    font-family: var(--font-display); font-weight: 700;
-    font-size: 17px; line-height: 1.2; color: #e7e3dd; margin: 0 0 14px;
+    font-family: var(--font-poppins); font-weight: 700;
+    font-size: 17px; line-height: 1.2; color: #2b616b; margin: 0 0 14px;
   }
   .mp-btn {
     display: inline-block; padding: 10px 18px; border-radius: 999px;
-    font-family: var(--font-body); font-size: 11px;
+    font-family: var(--font-poppins); font-size: 11px;
     letter-spacing: 0.12em; text-transform: uppercase;
     text-decoration: none; font-weight: 500; cursor: pointer;
   }
@@ -152,34 +168,35 @@ const MAP_STYLES = `
   /* Contrôles zoom */
   .leaflet-control-zoom { border: none !important; box-shadow: none !important; }
   .leaflet-control-zoom a {
-    background: rgba(26,46,50,0.88) !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
-    color: #e7e3dd !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(43,97,107,0.2) !important;
+    color: #2b616b !important;
     width: 32px !important; height: 32px !important; line-height: 30px !important;
     border-radius: 8px !important; margin-bottom: 4px !important;
     font-size: 17px !important; text-decoration: none !important;
     display: block !important; text-align: center !important;
+    backdrop-filter: blur(4px) !important;
   }
-  .leaflet-control-zoom a:hover { background: #2b616b !important; }
+  .leaflet-control-zoom a:hover { background: #2b616b !important; color: #e7e3dd !important; }
   .leaflet-control-attribution {
-    background: rgba(26,46,50,0.45) !important;
-    color: rgba(231,227,221,0.2) !important;
+    background: rgba(231,227,221,0.7) !important;
+    color: rgba(43,97,107,0.4) !important;
     font-size: 9px !important; border-radius: 4px 0 0 0 !important; padding: 2px 6px !important;
   }
-  .leaflet-control-attribution a { color: rgba(231,227,221,0.2) !important; }
+  .leaflet-control-attribution a { color: rgba(43,97,107,0.5) !important; }
   .leaflet-attribution-flag { display: none !important; }
 `
 
 function popupHTML(client: typeof CLIENTS[number]): string {
   const badgeStyles: Record<string, string> = {
-    vidéo:  'background:rgba(102,162,173,0.22);color:#66a2ad;',
-    client: 'background:rgba(244,219,117,0.22);color:#f4db75;',
-    photos: 'background:rgba(255,255,255,0.1);color:rgba(231,227,221,0.55);',
+    vidéo:  'background:rgba(43,97,107,0.12);color:#2b616b;',
+    client: 'background:rgba(244,219,117,0.5);color:#7a6200;',
+    photos: 'background:rgba(43,97,107,0.08);color:rgba(43,97,107,0.6);',
   }
   const btnStyles: Record<string, string> = {
-    vidéo:  'background:#66a2ad;color:#e7e3dd;',
+    vidéo:  'background:#2b616b;color:#e7e3dd;',
     client: 'background:#f4db75;color:#2b616b;',
-    photos: 'background:rgba(255,255,255,0.15);color:#e7e3dd;border:1px solid rgba(255,255,255,0.2);',
+    photos: 'background:rgba(43,97,107,0.12);color:#2b616b;border:1px solid rgba(43,97,107,0.2);',
   }
   const btnLabels: Record<string, string> = {
     vidéo:  'Voir la vidéo →',
@@ -191,9 +208,9 @@ function popupHTML(client: typeof CLIENTS[number]): string {
     : client.photoUrl ?? ''
   const thumbnail = thumbSrc
     ? `<img src="${thumbSrc}" alt="${client.nom}" style="width:calc(100% + 44px);margin:-18px -22px 14px;display:block;border-radius:14px 14px 0 0;aspect-ratio:16/9;object-fit:cover;" />`
-    : client.type === 'vidéo'
-      ? `<div style="width:calc(100% + 44px);margin:-18px -22px 14px;height:90px;background:rgba(255,255,255,0.05);border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:center;"><span style="color:rgba(231,227,221,0.2);font-size:22px;">▶</span></div>`
-      : ''
+    : `<div style="width:calc(100% + 44px);margin:-18px -22px 14px;height:90px;background:rgba(43,97,107,0.08);border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:center;">${
+        client.type === 'vidéo' ? '<span style="color:rgba(43,97,107,0.25);font-size:22px;">▶</span>' : ''
+      }</div>`
 
   return `
     <div class="mp-body">
@@ -207,7 +224,14 @@ function popupHTML(client: typeof CLIENTS[number]): string {
 }
 
 /* ── COMPOSANT ── */
-export default function FranceMap({ showCounter = true }: { showCounter?: boolean }) {
+interface FranceMapProps {
+  showCounter?: boolean
+  eyebrow?: string
+  title?: string
+  titleAccent?: string
+}
+
+export default function FranceMap({ showCounter = true, eyebrow, title, titleAccent }: FranceMapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<ReturnType<typeof import('leaflet')['map']> | null>(null)
   const [count, setCount] = useState(0)
@@ -224,12 +248,15 @@ export default function FranceMap({ showCounter = true }: { showCounter?: boolea
         center: INITIAL_CENTER,
         zoom: INITIAL_ZOOM,
         zoomControl: false,
-        scrollWheelZoom: true,
+        scrollWheelZoom: false,
         minZoom: 3,
         maxZoom: 18,
       })
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      /* Le zoom à la molette ne s'active qu'après un clic sur la carte */
+      map.on('click', () => map.scrollWheelZoom.enable())
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
         subdomains: 'abcd',
         maxZoom: 19,
@@ -307,24 +334,44 @@ export default function FranceMap({ showCounter = true }: { showCounter?: boolea
   const recenter = () => mapRef.current?.setView(INITIAL_CENTER, INITIAL_ZOOM)
 
   return (
-    <div className="px-8 py-16">
+    <div className={`px-8 md:px-20 pb-24 ${showCounter ? 'py-16' : 'pt-14'}`}>
+      <div className="max-w-[1400px] mx-auto">
       <style dangerouslySetInnerHTML={{ __html: MAP_STYLES }} />
+
+      {/* Titre */}
+      {title && (
+        <div className="mb-10">
+          {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
+          <TypewriterHeading
+            className="text-brand-deep leading-[0.9]"
+            style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(32px, 4.5vw, 56px)' }}
+            segments={
+              titleAccent && title.endsWith(titleAccent)
+                ? [
+                    { text: title.slice(0, title.length - titleAccent.length) },
+                    { text: titleAccent, className: 'text-brand-mid' },
+                  ]
+                : [{ text: title }]
+            }
+          />
+        </div>
+      )}
 
       {/* Compteur */}
       {showCounter && (
         <div className="text-center mb-10">
           <p className="eyebrow mb-3">Présence internationale</p>
-          <p className="font-display font-black text-brand-deep leading-none" style={{ fontSize: 'clamp(52px, 7vw, 80px)' }}>
+          <p className="font-poppins font-black text-brand-deep leading-none" style={{ fontSize: 'clamp(52px, 7vw, 80px)' }}>
             {count}
           </p>
-          <p className="font-body font-light text-brand-deep/60 text-[13px] mt-2 tracking-wide">
-            marques accompagnées — France, Espagne, Italie, Maroc
+          <p className="font-poppins font-light text-brand-deep/60 text-[13px] mt-2 tracking-wide">
+            marques accompagnées en France, Espagne, Italie, Maroc, Lituanie
           </p>
         </div>
       )}
 
       {/* Carte */}
-      <div className="relative rounded-2xl overflow-hidden h-[350px] md:h-[500px]"
+      <div className="relative isolate rounded-2xl overflow-hidden h-[350px] md:h-[500px]"
            style={{ boxShadow: `0 0 80px 40px ${CREAM} inset` }}>
         <div ref={containerRef} className="absolute inset-0" />
 
@@ -341,20 +388,23 @@ export default function FranceMap({ showCounter = true }: { showCounter?: boolea
         {/* Recentrer */}
         <button
           onClick={recenter}
-          className="absolute top-4 left-4 z-[1000] bg-brand-deep/80 text-brand-cream font-body text-[10px] uppercase tracking-[0.14em] px-4 py-2 rounded-full hover:bg-brand-deep transition-colors backdrop-blur-sm"
+          className="absolute top-4 left-4 z-[1000] font-poppins text-[10px] uppercase tracking-[0.14em] px-4 py-2 rounded-full transition-colors"
+          style={{ background: '#ffffff', color: '#2b616b', border: '1px solid rgba(43,97,107,0.15)' }}
         >
           Recentrer
         </button>
 
         {/* Légende */}
-        <div className="absolute bottom-4 left-4 z-[1000] flex gap-3 bg-brand-deep/70 backdrop-blur-sm rounded-xl px-4 py-2.5">
-          {([['vidéo', '#66a2ad'], ['client', '#f4db75'], ['photos', '#c9b8a5']] as const).map(([label, color]) => (
+        <div className="absolute bottom-4 left-4 z-[1000] flex gap-3 rounded-xl px-4 py-2.5 backdrop-blur-sm"
+             style={{ background: '#ffffff', border: '1px solid rgba(43,97,107,0.12)' }}>
+          {([['client', '#f4db75'], ['vidéo', '#2b616b'], ['photos', '#c9b8a5']] as const).map(([label, color]) => (
             <div key={label} className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: color }} />
-              <span className="font-body text-[9px] text-brand-cream/70 uppercase tracking-wider">{label}</span>
+              <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: color, border: label === 'client' ? '1px solid rgba(43,97,107,0.2)' : 'none' }} />
+              <span className="font-poppins text-[9px] uppercase tracking-wider" style={{ color: 'rgba(43,97,107,0.65)' }}>{label}</span>
             </div>
           ))}
         </div>
+      </div>
       </div>
     </div>
   )

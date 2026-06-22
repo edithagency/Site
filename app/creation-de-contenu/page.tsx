@@ -6,6 +6,9 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ugcItems, ugcCategories, type UGCItem } from '@/data/ugc'
 import { mapPlaces, type MapPlace } from '@/data/mapPlaces'
+import { clients } from '@/data/clients'
+import PageHero from '@/components/PageHero'
+import ClientsLoopSlider from '@/components/ClientsLoopSlider'
 
 type GridItem =
   | { kind: 'real'; data: UGCItem }
@@ -32,7 +35,10 @@ export default function CreationDeContenuPage() {
   }, [])
   const CLIENT_SLUGS: Record<string, string> = {
     'les-bucherons':         'bucherons-barber',
+    'les-bucherons-2':       'bucherons-barber',
+    'les-bucherons-3':       'bucherons-barber',
     'prod-daiki':            'prod-daiki',
+    'prod-daiki-2':          'prod-daiki',
     'librairie-de-florence': 'librairie-de-florence',
     'itineraire-sur-mesure': 'itineraire-sur-mesure',
   }
@@ -55,43 +61,22 @@ export default function CreationDeContenuPage() {
 
   return (
     <>
-      {/* Hero avec image */}
-      <section className="relative pt-32 pb-0 overflow-hidden">
-        <div className="relative w-full page-hero-banner bg-brand-deep/25 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-cream/90" />
-          <div className="absolute bottom-0 left-0 px-8 pb-16">
-            <h1
-              className="font-display font-black text-brand-deep leading-[0.9]"
-              style={{ fontSize: 'clamp(44px, 7vw, 80px)' }}
-            >
-              <span className="block" style={{ whiteSpace: 'nowrap' }}>Création de</span>
-              <span className="block text-brand-yellow">contenu.</span>
-            </h1>
-          </div>
-        </div>
-        <span
-          className="absolute top-44 right-16 font-script text-brand-yellow hidden md:block"
-          style={{ fontSize: 'clamp(24px, 2.5vw, 36px)', transform: 'rotate(-3deg)' }}
-        >
-          vidéos, photos, univers.
-        </span>
-      </section>
-
-      {/* Intro */}
-      <section className="px-8 pt-10 pb-2">
-        <p className="font-body font-light text-[15px] text-brand-deep/60 max-w-md leading-relaxed">
-          Contenus UGC, shootings produits, Reels : des créations pensées pour engager, pour chaque univers de marque.
-        </p>
-      </section>
+      <PageHero
+        backgroundVideo="/videos/services-hero.mp4"
+        overlayOpacity={25}
+        title="Création de contenu"
+        titleFontSize="clamp(30px, 4.8vw, 74px)"
+        taglineBelow="Des contenus qui prennent le large et captent l'attention."
+      />
 
       {/* Filtres */}
-      <section className="px-8 pt-8 pb-12">
+      <section className="px-8 pt-24 pb-12">
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`font-body text-[11px] uppercase tracking-[0.12em] px-4 py-2 rounded-full border transition-colors duration-200 ${
+              className={`font-poppins text-[11px] uppercase tracking-[0.12em] px-4 py-2 rounded-full border transition-colors duration-200 ${
                 activeCategory === cat
                   ? 'bg-brand-deep text-brand-cream border-brand-deep'
                   : 'border-brand-deep/30 text-brand-deep/60 hover:border-brand-deep hover:text-brand-deep'
@@ -104,7 +89,7 @@ export default function CreationDeContenuPage() {
       </section>
 
       {/* Grille unifiée */}
-      <section className="px-8 pb-32">
+      <section id="contenus" className="px-8 pb-32">
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 items-start">
           {filtered.map((gi, i) => {
             const offset = i % 3 === 1 ? 28 : i % 3 === 2 ? 14 : 0
@@ -125,7 +110,7 @@ export default function CreationDeContenuPage() {
                   <p className="eyebrow mb-2">{item.category}</p>
 
                   <motion.div
-                    className="relative rounded-2xl overflow-hidden bg-brand-deep/15 cursor-pointer"
+                    className="relative overflow-hidden bg-brand-deep/15 cursor-pointer"
                     style={{ aspectRatio: '9/16' }}
                     whileHover={{ scale: 1.04 }}
                     transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -163,11 +148,18 @@ export default function CreationDeContenuPage() {
                           )}
                           <div className="absolute inset-0 flex items-center justify-center">
                             <motion.div
-                              className="w-14 h-14 rounded-full bg-brand-yellow flex items-center justify-center shadow-md"
-                              whileHover={{ scale: 1.15, boxShadow: '0 0 24px rgba(244,219,117,0.7)' }}
-                              transition={{ duration: 0.2 }}
+                              className="relative flex items-center justify-center"
+                              whileHover={{ scale: 1.08 }}
+                              transition={{ duration: 0.25 }}
                             >
-                              <span className="text-brand-deep text-xl ml-1">▶</span>
+                              {/* Anneau fin */}
+                              <div className="w-16 h-16 rounded-full border border-brand-yellow/60" />
+                              {/* Cercle plein jaune plus petit */}
+                              <div className="absolute w-10 h-10 rounded-full bg-brand-yellow flex items-center justify-center">
+                                <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                                  <path d="M1 1.5L11 7L1 12.5V1.5Z" fill="#2b616b" />
+                                </svg>
+                              </div>
                             </motion.div>
                           </div>
                         </div>
@@ -182,11 +174,16 @@ export default function CreationDeContenuPage() {
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center">
                         <motion.div
-                          className="w-14 h-14 rounded-full bg-brand-yellow flex items-center justify-center shadow-md"
-                          whileHover={{ scale: 1.15 }}
-                          transition={{ duration: 0.2 }}
+                          className="relative flex items-center justify-center"
+                          whileHover={{ scale: 1.08 }}
+                          transition={{ duration: 0.25 }}
                         >
-                          <span className="text-brand-deep text-xl ml-1">▶</span>
+                          <div className="w-16 h-16 rounded-full border border-brand-yellow/60" />
+                          <div className="absolute w-10 h-10 rounded-full bg-brand-yellow flex items-center justify-center">
+                            <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                              <path d="M1 1.5L11 7L1 12.5V1.5Z" fill="#2b616b" />
+                            </svg>
+                          </div>
                         </motion.div>
                       </div>
                     )}
@@ -195,7 +192,7 @@ export default function CreationDeContenuPage() {
                   </motion.div>
 
                   <div className="flex items-center gap-2 mt-2 flex-wrap">
-                    <p className="font-display font-bold text-brand-deep text-[1.1rem]">{item.brand}</p>
+                    <p className="text-brand-deep text-[1.1rem]" style={{ fontFamily: "'The Seasons', serif", fontWeight: 400 }}>{item.brand}</p>
                     {CLIENT_SLUGS[item.id] && (
                       <Link href={`/projets/${CLIENT_SLUGS[item.id]}`} className="text-brand-deep/30 hover:text-brand-deep/70 transition-colors flex-shrink-0">
                         <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><line x1="0" y1="5" x2="12" y2="5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/><path d="M9 1.5l4 3.5-4 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -203,7 +200,7 @@ export default function CreationDeContenuPage() {
                     )}
                   </div>
                   {item.description && (
-                    <p className="font-body text-[11px] text-brand-mid mt-0.5 leading-relaxed">{item.description}</p>
+                    <p className="font-poppins text-[11px] text-brand-mid mt-0.5 leading-relaxed">{item.description}</p>
                   )}
                 </motion.div>
               )
@@ -226,13 +223,13 @@ export default function CreationDeContenuPage() {
                 <p className="eyebrow mb-2">{place.category}</p>
 
                 <div
-                  className="relative rounded-2xl overflow-hidden bg-brand-deep/8 border border-brand-deep/10"
+                  className="relative overflow-hidden bg-brand-deep/8 border border-brand-deep/10"
                   style={{ aspectRatio: '9/16' }}
                 >
                   {/* Badge type */}
                   <div className="absolute top-3 left-3 z-10">
                     <span
-                      className="font-body text-[8px] uppercase tracking-[0.18em] px-2 py-1 rounded-full"
+                      className="font-poppins text-[8px] uppercase tracking-[0.18em] px-2 py-1 rounded-full"
                       style={
                         isVideo
                           ? { background: 'rgba(102,162,173,0.18)', color: '#66a2ad' }
@@ -250,57 +247,29 @@ export default function CreationDeContenuPage() {
                         {isVideo ? '▶' : '◻'}
                       </span>
                     </div>
-                    <p className="font-body text-[9px] text-brand-deep/25 uppercase tracking-[0.18em] text-center leading-relaxed">
+                    <p className="font-poppins text-[9px] text-brand-deep/25 uppercase tracking-[0.18em] text-center leading-relaxed">
                       Contenu à intégrer
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2 mt-2 flex-wrap">
-                  <p className="font-display font-bold text-brand-deep text-[1.1rem] leading-tight">{place.nom}</p>
+                  <p className="text-brand-deep text-[1.1rem] leading-tight" style={{ fontFamily: "'The Seasons', serif", fontWeight: 400 }}>{place.nom}</p>
                   {CLIENT_SLUGS[place.anchor] && (
                     <Link href={`/projets/${CLIENT_SLUGS[place.anchor]}`} className="text-brand-deep/30 hover:text-brand-deep/70 transition-colors flex-shrink-0">
                       <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><line x1="0" y1="5" x2="12" y2="5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/><path d="M9 1.5l4 3.5-4 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </Link>
                   )}
                 </div>
-                <p className="font-body text-[11px] text-brand-mid mt-0.5">{place.ville}</p>
+                <p className="font-poppins text-[11px] text-brand-mid mt-0.5">{place.ville}</p>
               </motion.div>
             )
           })}
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="px-8 pb-24 grid grid-cols-1 md:grid-cols-2 gap-8 items-center border-t border-brand-deep/10 pt-16">
-        <div>
-          <p className="eyebrow mb-4">Vous avez un projet en tête ?</p>
-          <h2 className="font-display font-black text-brand-deep leading-[0.9]"
-              style={{ fontSize: 'clamp(30px, 4vw, 50px)' }}>
-            Créons quelque chose{' '}
-            <span className="text-brand-yellow">
-              ensemble.
-            </span>
-          </h2>
-          <p className="font-body font-light text-[15px] text-brand-deep/60 leading-relaxed mt-4 max-w-sm">
-            UGC, Reels, shooting : je m'adapte à votre univers et vos plateformes.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3 md:items-end">
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-brand-deep text-brand-cream font-body text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full hover:opacity-80 transition-opacity w-fit"
-          >
-            Me contacter
-          </Link>
-          <Link
-            href="/projets"
-            className="inline-flex items-center gap-2 border border-brand-deep text-brand-deep font-body text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full hover:bg-brand-deep hover:text-brand-cream transition-colors w-fit"
-          >
-            Voir les projets
-          </Link>
-        </div>
-      </section>
+      {/* ── CLIENTS ── */}
+      <ClientsLoopSlider clients={clients} className="bg-[#dde6e7]" fadeColor="#dde6e7" />
     </>
   )
 }

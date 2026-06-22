@@ -85,7 +85,7 @@ export default function RelatedProjectsCarousel({ clients }: Props) {
               </div>
             </div>
             <p className="eyebrow mb-1">{client.category}</p>
-            <p className="font-display font-bold text-brand-deep text-base group-hover:text-brand-mid transition-colors">
+            <p className="text-brand-deep text-base group-hover:text-brand-mid transition-colors" style={{ fontFamily: "'The Seasons', serif", fontWeight: 400 }}>
               {client.name}
             </p>
           </Link>

@@ -76,7 +76,7 @@ export default function StatsCounter() {
           <div key={i} style={{ minWidth: 0 }}>
             <p
               style={{
-                fontFamily: 'var(--font-display), serif',
+                fontFamily: 'var(--font-poppins), sans-serif',
                 fontWeight: 900,
                 fontSize: 'clamp(44px, 5.5vw, 68px)',
                 lineHeight: 1,
@@ -91,7 +91,7 @@ export default function StatsCounter() {
             </p>
             <p
               style={{
-                fontFamily: 'var(--font-body), sans-serif',
+                fontFamily: 'var(--font-poppins), sans-serif',
                 fontWeight: 400,
                 fontSize: '11px',
                 letterSpacing: '0.16em',

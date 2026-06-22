@@ -78,7 +78,7 @@ export default function ClientMediaSection({ media, className = '' }: Props) {
                       ) : (
                         /* Placeholder vidéo — remplacer youtubeId par le vrai ID YouTube */
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="font-body text-[8px] text-brand-deep/25 uppercase tracking-[0.18em] text-center px-2">
+                          <span className="font-poppins text-[8px] text-brand-deep/25 uppercase tracking-[0.18em] text-center px-2">
                             Vidéo à intégrer
                           </span>
                         </div>
@@ -112,7 +112,7 @@ export default function ClientMediaSection({ media, className = '' }: Props) {
                   ) : (
                     /* Placeholder photo — remplacer src par le chemin de la vraie photo */
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-body text-[8px] text-brand-deep/25 uppercase tracking-[0.18em] text-center px-2">
+                      <span className="font-poppins text-[8px] text-brand-deep/25 uppercase tracking-[0.18em] text-center px-2">
                         Photo à intégrer
                       </span>
                     </div>

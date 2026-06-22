@@ -1,7 +1,7 @@
 export interface UGCItem {
   id: string
   brand: string
-  category: 'Restauration' | 'Loisirs & Activités' | 'Établissement' | 'Beauté & Bien-être' | 'Culture'
+  category: 'Restauration' | 'Loisirs' | 'Établissement' | 'Beauté & Bien-être' | 'Culture' | 'Voyage'
   videoUrl?: string   // laisser vide pour les entrées photos uniquement
   thumbnail?: string  // chemin depuis /public — ex: '/images/ugc/nom-marque.jpg'
   logo?: string       // chemin depuis /public — ex: '/images/logos/nom-marque.png'
@@ -9,6 +9,48 @@ export interface UGCItem {
 }
 
 export const ugcItems: UGCItem[] = [
+  {
+    id: 'la-belle-en-folie',
+    brand: 'La Belle en Folie',
+    category: 'Restauration',
+    videoUrl: 'https://www.youtube.com/embed/jRQakJEC04g?rel=0',
+    description: 'Bordeaux, France',
+  },
+  {
+    id: 'canope',
+    brand: 'Canopé',
+    category: 'Restauration',
+    videoUrl: 'https://www.youtube.com/embed/ILYeD37zjKg?rel=0',
+    description: 'Paris, France',
+  },
+  {
+    id: 'brique-machine',
+    brand: 'Brique Machine',
+    category: 'Restauration',
+    videoUrl: 'https://www.youtube.com/embed/BNwl3nb_vZw?rel=0',
+    description: 'Paris, France',
+  },
+  {
+    id: 'les-artizans',
+    brand: 'Les Artizans',
+    category: 'Restauration',
+    videoUrl: 'https://www.youtube.com/embed/7MKGIU5CaMY?rel=0',
+    description: 'Paris, France',
+  },
+  {
+    id: 'senza-nome',
+    brand: 'Senza Nome',
+    category: 'Restauration',
+    videoUrl: 'https://www.youtube.com/embed/0JQnnAlIfjM?rel=0',
+    description: 'Paris, France',
+  },
+  {
+    id: 'fufu-ramen',
+    brand: 'Fufu Ramen',
+    category: 'Restauration',
+    videoUrl: 'https://www.youtube.com/embed/HjzK-FiCOLY?rel=0',
+    description: 'Bordeaux, France',
+  },
   {
     id: 'agriturismo-i-millepini',
     brand: 'Agriturismo i Millepini',
@@ -34,29 +76,81 @@ export const ugcItems: UGCItem[] = [
   {
     id: 'merci-internet',
     brand: 'Merci Internet',
-    category: 'Établissement',
+    category: 'Loisirs',
     videoUrl: 'https://www.youtube.com/embed/5q_Qv_EgZy0?rel=0',
     description: 'Paris, France',
   },
   {
     id: 'merci-internet-2',
     brand: 'Merci Internet',
-    category: 'Établissement',
+    category: 'Loisirs',
     videoUrl: 'https://www.youtube.com/embed/rWXss4KgcEY?rel=0',
     description: 'Paris, France',
+  },
+  {
+    id: 'burga',
+    brand: 'BURGA',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/Fhpk2IL4RvA?rel=0',
+  },
+  {
+    id: 'luxeol',
+    brand: 'Luxéol',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/Ka8LJPUqw6s?rel=0',
+  },
+  {
+    id: 'burga-2',
+    brand: 'BURGA',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/mI3cl2yX5sA?rel=0',
+  },
+  {
+    id: 'superdry',
+    brand: 'SUPERDRY',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/J_k-8tIOTUk?rel=0',
+    description: 'Bordeaux, France',
+  },
+  {
+    id: 'garancia',
+    brand: 'GARANCIA',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/EKR_xMVPx7M?rel=0',
+  },
+  {
+    id: 'oxxy',
+    brand: 'OXXY Club',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/2zp7arQTa4U?rel=0',
+    description: 'Bordeaux, France',
+  },
+  {
+    id: 'les-bucherons',
+    brand: 'Les Bûcherons',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/cA7L6fpHlIY?rel=0',
+    description: 'Bordeaux, France',
+  },
+  {
+    id: 'les-bucherons-2',
+    brand: 'Les Bûcherons',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/hev_jh1cNTU?rel=0',
+    description: 'Bordeaux, France',
+  },
+  {
+    id: 'les-bucherons-3',
+    brand: 'Les Bûcherons',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/MSGzTlCQWbE?rel=0',
+    description: 'Bordeaux, France',
   },
   {
     id: 'studio-on',
     brand: 'Studio On',
     category: 'Beauté & Bien-être',
     videoUrl: 'https://www.youtube.com/embed/zRsZ4u47aR8?rel=0',
-    description: 'Paris, France',
-  },
-  {
-    id: 'senza-nome',
-    brand: 'Senza Nome',
-    category: 'Restauration',
-    videoUrl: 'https://www.youtube.com/embed/0JQnnAlIfjM?rel=0',
     description: 'Paris, France',
   },
   {
@@ -81,52 +175,24 @@ export const ugcItems: UGCItem[] = [
     description: 'Paris, France',
   },
   {
-    id: 'les-bucherons',
-    brand: 'Les Bûcherons',
-    category: 'Beauté & Bien-être',
-    videoUrl: 'https://www.youtube.com/embed/cA7L6fpHlIY?rel=0',
-    description: 'Bordeaux, France',
-  },
-  {
-    id: 'brique-machine',
-    brand: 'Brique Machine',
-    category: 'Restauration',
-    videoUrl: 'https://www.youtube.com/embed/BNwl3nb_vZw?rel=0',
+    id: 'muziquiz',
+    brand: "Muzi'Quiz",
+    category: 'Loisirs',
+    videoUrl: 'https://www.youtube.com/embed/s9XRlXO0pSg?rel=0',
     description: 'Paris, France',
   },
   {
-    id: 'la-madonnina',
-    brand: 'La Madonnina',
-    category: 'Restauration',
-    videoUrl: 'https://www.youtube.com/embed/Y-_wiXrdb9I?rel=0',
+    id: 'quizz-room',
+    brand: 'Quiz Room Paris',
+    category: 'Loisirs',
+    videoUrl: 'https://www.youtube.com/embed/KWCNliP9neQ?rel=0',
     description: 'Paris, France',
   },
   {
     id: 'time-tripper',
     brand: 'Time Tripper',
-    category: 'Loisirs & Activités',
+    category: 'Loisirs',
     videoUrl: 'https://www.youtube.com/embed/w7eybFbsOAQ?rel=0',
-    description: 'Paris, France',
-  },
-  {
-    id: 'les-artizans',
-    brand: 'Les Artizans',
-    category: 'Restauration',
-    videoUrl: 'https://www.youtube.com/embed/7MKGIU5CaMY?rel=0',
-    description: 'Paris, France',
-  },
-  {
-    id: 'fufu-ramen',
-    brand: 'Fufu Ramen',
-    category: 'Restauration',
-    videoUrl: 'https://www.youtube.com/embed/HjzK-FiCOLY?rel=0',
-    description: 'Bordeaux, France',
-  },
-  {
-    id: 'muziquiz',
-    brand: "Muzi'Quiz",
-    category: 'Loisirs & Activités',
-    videoUrl: 'https://www.youtube.com/embed/s9XRlXO0pSg?rel=0',
     description: 'Paris, France',
   },
   {
@@ -142,13 +208,6 @@ export const ugcItems: UGCItem[] = [
     category: 'Restauration',
     videoUrl: 'https://www.youtube.com/embed/Gdsu5btorHM?rel=0',
     description: 'Bordeaux, France',
-  },
-  {
-    id: 'canope',
-    brand: 'Canopé',
-    category: 'Restauration',
-    videoUrl: 'https://www.youtube.com/embed/ILYeD37zjKg?rel=0',
-    description: 'Paris, France',
   },
   {
     id: 'pepita',
@@ -186,10 +245,24 @@ export const ugcItems: UGCItem[] = [
     description: 'Bordeaux, France',
   },
   {
+    id: 'prod-daiki-2',
+    brand: 'Prod Daiki',
+    category: 'Culture',
+    videoUrl: 'https://www.youtube.com/embed/moi-8-sH8PA?rel=0',
+    description: 'Bordeaux, France',
+  },
+  {
     id: 'itineraire-sur-mesure',
     brand: 'Itinéraire sur Mesure',
-    category: 'Loisirs & Activités',
+    category: 'Voyage',
     videoUrl: 'https://www.youtube.com/embed/R2o8j4PAsuE?rel=0',
+    description: 'Barcelone, Espagne',
+  },
+  {
+    id: 'itineraire-sur-mesure-2',
+    brand: 'Itinéraire sur Mesure',
+    category: 'Voyage',
+    videoUrl: 'https://www.youtube.com/embed/zBE32etkWQI?rel=0',
     description: 'Barcelone, Espagne',
   },
   {
@@ -207,13 +280,6 @@ export const ugcItems: UGCItem[] = [
     description: 'Bordeaux, France',
   },
   {
-    id: 'quizz-room',
-    brand: 'Quiz Room Paris',
-    category: 'Loisirs & Activités',
-    videoUrl: 'https://www.youtube.com/embed/KWCNliP9neQ?rel=0',
-    description: 'Paris, France',
-  },
-  {
     id: 'armelle-creperie',
     brand: 'Armelle Crêperie',
     category: 'Restauration',
@@ -227,6 +293,13 @@ export const ugcItems: UGCItem[] = [
     videoUrl: 'https://www.youtube.com/embed/WPw6Ees54Dc?rel=0',
     description: 'Paris, France',
   },
+  {
+    id: 'la-madonnina',
+    brand: 'La Madonnina',
+    category: 'Restauration',
+    videoUrl: 'https://www.youtube.com/embed/Y-_wiXrdb9I?rel=0',
+    description: 'Paris, France',
+  },
 ]
 
-export const ugcCategories = ['Restauration', 'Loisirs & Activités', 'Établissement', 'Beauté & Bien-être', 'Culture'] as const
+export const ugcCategories = ['Restauration', 'Beauté & Bien-être', 'Loisirs', 'Établissement', 'Culture', 'Voyage'] as const

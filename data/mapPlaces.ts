@@ -37,17 +37,17 @@ export const mapPlaces: MapPlace[] = [
   // ── Culture ───────────────────────────────────────────────────────────
   { anchor: 'prod-daiki',             nom: 'Prod Daiki',                       ville: 'Bordeaux, France',               type: 'vidéo',  category: 'Culture'            },
   { anchor: 'librairie-de-florence',  nom: 'Librairie Française de Florence',  ville: 'Florence, Italie',       type: 'photos', category: 'Culture'            },
-  // ── Loisirs & Activités ───────────────────────────────────────────────
-  { anchor: 'quizz-room',             nom: 'Quiz Room Paris',                  ville: 'Paris, France',                  type: 'vidéo',  category: 'Loisirs & Activités'},
-  { anchor: 'time-tripper',           nom: 'Time Tripper',                     ville: 'Paris, France',                  type: 'vidéo',  category: 'Loisirs & Activités'},
-  { anchor: 'muziquiz',               nom: "Muzi'Quiz",                        ville: 'Paris, France',                  type: 'vidéo',  category: 'Loisirs & Activités'},
-  { anchor: 'itineraire-sur-mesure',  nom: 'Itinéraire sur Mesure',            ville: 'Barcelone, Espagne',              type: 'vidéo',  category: 'Loisirs & Activités'},
+  // ── Loisirs ───────────────────────────────────────────────
+  { anchor: 'quizz-room',             nom: 'Quiz Room Paris',                  ville: 'Paris, France',                  type: 'vidéo',  category: 'Loisirs'},
+  { anchor: 'time-tripper',           nom: 'Time Tripper',                     ville: 'Paris, France',                  type: 'vidéo',  category: 'Loisirs'},
+  { anchor: 'muziquiz',               nom: "Muzi'Quiz",                        ville: 'Paris, France',                  type: 'vidéo',  category: 'Loisirs'},
+  { anchor: 'itineraire-sur-mesure',  nom: 'Itinéraire sur Mesure',            ville: 'Barcelone, Espagne',              type: 'vidéo',  category: 'Voyage'},
   { anchor: 'armelle-creperie',       nom: 'Armelle Crêperie',                 ville: 'Paris, France',                  type: 'vidéo',  category: 'Restauration'       },
   { anchor: 'quartier-general',       nom: 'Quartier Général',                 ville: 'Paris, France',                  type: 'vidéo',  category: 'Restauration'       },
   // ── Établissement ─────────────────────────────────────────────────────
   { anchor: 'meriadeck',              nom: 'Centre Commercial Mériadeck',      ville: 'Bordeaux, France',               type: 'vidéo',  category: 'Établissement'      },
   { anchor: 'shoko-madrid',           nom: 'Shoko Madrid',                     ville: 'Madrid, Espagne',                 type: 'vidéo',  category: 'Établissement'      },
-  { anchor: 'merci-internet',         nom: 'Merci Internet',                   ville: 'Paris, France',                  type: 'vidéo',  category: 'Établissement'      },
+  { anchor: 'merci-internet',         nom: 'Merci Internet',                   ville: 'Paris, France',                  type: 'vidéo',  category: 'Loisirs'      },
   { anchor: 'emeraude-luxury-camp',   nom: 'Emeraude Luxury Camp',             ville: 'Agafay, Maroc',          type: 'photos', category: 'Établissement'      },
   { anchor: 'agriturismo-i-millepini',nom: 'Agriturismo i Millepini',          ville: 'Loro Ciuffenna, Italie', type: 'photos', category: 'Établissement'      },
 ]

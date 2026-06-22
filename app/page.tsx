@@ -2,13 +2,17 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { clients } from '@/data/clients'
 import ProjectsCarousel from '@/components/ProjectsCarousel'
-import StatsCounter from '@/components/StatsCounter'
+import PageHero from '@/components/PageHero'
+import SectionReveal from '@/components/SectionReveal'
+import TypewriterHeading from '@/components/TypewriterHeading'
+import FAQAccordion from '@/components/FAQAccordion'
+import FeaturedContent from '@/components/FeaturedContent'
 
 export const metadata: Metadata = {
-  title: 'Freelance Communication & Vidéo à Bordeaux et Paris | Edith Agency',
+  title: 'Freelance Communication & Vidéo à Bordeaux et Paris | Sea More Agency',
   description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
   openGraph: {
-    title: 'Freelance Communication & Vidéo à Bordeaux et Paris | Edith Agency',
+    title: 'Freelance Communication & Vidéo à Bordeaux et Paris | Sea More Agency',
     description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
     locale: 'fr_FR',
     type: 'website',
@@ -18,7 +22,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  name: 'Edith Agency',
+  name: 'Sea More Agency',
   description: 'Freelance en communication, création de contenu vidéo, branding et community management',
   areaServed: ['Bordeaux', 'Paris', 'France'],
   address: {
@@ -33,158 +37,236 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex items-center pt-24 pb-20 px-8 overflow-hidden">
-        <div className="max-w-[580px] relative z-10">
-          <p className="eyebrow mb-6">Agence de communication — Bordeaux</p>
-
-          <h1
-            className="font-display font-black text-brand-deep leading-[0.9] mb-4"
-            style={{ fontSize: 'clamp(52px, 8vw, 88px)' }}
-          >
-            <span className="block">Votre marque,</span>
-            <span className="block text-brand-yellow">vivante.</span>
-          </h1>
-
-          <span
-            className="block font-script text-brand-yellow mb-8"
-            style={{ fontSize: 'clamp(28px, 4vw, 42px)', transform: 'rotate(-3deg)', transformOrigin: 'left center' }}
-          >
-            sur-mesure.
-          </span>
-
-          <div className="flex flex-wrap gap-2 mb-8">
-            {['Branding', 'Social Media', 'Contenu', 'Vidéo'].map((tag) => (
-              <span key={tag} className="pill">{tag}</span>
-            ))}
-          </div>
-
-          <p className="font-body font-light text-[15px] text-brand-deep/70 mb-10 max-w-[300px] leading-relaxed">
-            Je crée des univers de marque cohérents et des contenus qui résonnent, pour des marques créatives à Bordeaux, Paris et partout en France.
-          </p>
-
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/projets"
-              className="inline-flex items-center gap-2 bg-brand-deep text-brand-cream font-body text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full hover:opacity-80 transition-opacity"
-            >
-              Voir mes projets
-            </Link>
-            <Link
-              href="/audit"
-              className="inline-flex items-center gap-2 border border-brand-deep text-brand-deep font-body text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full hover:bg-brand-deep hover:text-brand-cream transition-colors"
-            >
-              Audit Express ✦
-            </Link>
-          </div>
-        </div>
-
-        {/* Photos décoratives pivotées */}
-        <div className="absolute right-16 top-1/2 -translate-y-1/2 hidden lg:block">
-          <div
-            className="absolute w-[220px] h-[300px] bg-brand-mid/50 rounded-xl"
-            style={{ transform: 'rotate(4deg)', top: '-80px', right: '40px' }}
-          />
-          <div
-            className="absolute w-[180px] h-[240px] bg-brand-deep/30 rounded-xl"
-            style={{ transform: 'rotate(-2deg)', top: '60px', right: '-20px' }}
-          />
-        </div>
-      </section>
+      {/* Remplacer leftImage et rightImage par les vraies photos quand disponibles */}
+      <PageHero
+        backgroundVideo="/videos/projets-hero.mp4"
+        title="Sea More Agency"
+        titleImage="/images/logo.png"
+        lead="Voir au-delà pour révéler votre potentiel"
+        leadSmall="VIDEO - COMMUNICATION - SITE WEB"
+        overlayOpacity={25}
+      />
 
       {/* ── CARROUSEL PROJETS ── */}
-      <section className="py-20 overflow-hidden">
-        <div className="px-8 mb-12 flex items-end justify-between">
+      <SectionReveal>
+      <section className="pt-20 pb-16 overflow-hidden">
+        <div className="px-8 md:px-20">
+        <div className="max-w-[1400px] mx-auto mb-12 flex items-end justify-between">
           <div>
             <p className="eyebrow mb-3">Projets récents</p>
-            <h2
-              className="font-display font-black text-brand-deep leading-[0.9]"
-              style={{ fontSize: 'clamp(36px, 5vw, 58px)' }}
-            >
-              Ce que je fais{' '}
-              <span className="text-brand-yellow">vraiment.</span>
-            </h2>
+            <TypewriterHeading
+              className="text-brand-deep leading-[0.9]"
+              style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(32px, 4.5vw, 56px)' }}
+              segments={[
+                { text: 'Ce que je fais ' },
+                { text: 'vraiment.', className: 'text-brand-mid' },
+              ]}
+            />
           </div>
           <Link
             href="/projets"
-            className="hidden md:inline-flex items-center gap-2 font-body text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors"
+            className="hidden md:inline-flex items-center gap-2 font-poppins text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors shrink-0"
           >
             Tous les projets <span aria-hidden>→</span>
           </Link>
         </div>
+        </div>
 
         <ProjectsCarousel clients={clients} />
 
-
       </section>
-
-      {/* ── STATS ── */}
-      <StatsCounter />
+      </SectionReveal>
 
       {/* ── SERVICES ── */}
-      <section className="px-8 py-24">
-        <p className="eyebrow mb-4">Ce que je propose</p>
-        <h2
-          className="font-display font-black text-brand-deep leading-[0.9] mb-14"
-          style={{ fontSize: 'clamp(32px, 4.5vw, 56px)' }}
-        >
-          Mes{' '}
-          <span className="text-brand-yellow">services.</span>
-        </h2>
+      <SectionReveal>
+      <section
+        className="px-8 md:px-20 pt-14 pb-16"
+        style={{ background: 'linear-gradient(to bottom, white, rgba(43,97,107,0.16) 24%, rgba(43,97,107,0.16) 89%, white)' }}
+      >
+        <div className="max-w-[1400px] mx-auto">
+        <div className="mb-10 flex items-end justify-between gap-6">
+          <div>
+            <p className="eyebrow mb-4">Ce que je propose</p>
+            <TypewriterHeading
+              className="text-brand-deep leading-[0.9] -ml-1"
+              style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(32px, 4.5vw, 56px)' }}
+              segments={[
+                { text: 'Mes ' },
+                { text: 'services.', className: 'text-brand-mid' },
+              ]}
+            />
+          </div>
+          <Link
+            href="/services"
+            className="hidden md:inline-flex items-center gap-2 font-poppins text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors shrink-0"
+          >
+            Découvrir <span aria-hidden>→</span>
+          </Link>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 sm:grid-flow-col gap-3 sm:gap-4">
           {[
-            { emoji: '🎬', title: 'Création de Contenu Vidéo', desc: "Des vidéos qui captent l'attention et racontent ton histoire.", anchor: 'contenu-video' },
-            { emoji: '📱', title: 'Community Management', desc: "Je gère tes réseaux pour que ta communauté grandisse sans que tu t'en occupes.", anchor: 'community-management' },
-            { emoji: '🎨', title: 'Branding & Identité Visuelle', desc: 'Une image de marque forte, cohérente et immédiatement reconnaissable.', anchor: 'branding' },
-            { emoji: '📣', title: 'Stratégie de Communication', desc: 'Une direction claire pour que chaque action de communication serve un objectif précis.', anchor: 'strategie' },
-            { emoji: '💻', title: 'Création de Site Web', desc: 'Un site moderne, rapide et pensé pour convertir tes visiteurs en clients.', anchor: 'site-web' },
-            { emoji: '🔍', title: 'SEO & Visibilité en ligne', desc: 'Être trouvé sur Google par les bonnes personnes, au bon moment.', anchor: 'seo' },
-          ].map(({ emoji, title, desc, anchor }) => (
-            <Link
+            { num: '01', title: 'Branding & Identité Visuelle', desc: 'Une image de marque forte, cohérente et immédiatement reconnaissable.', anchor: 'branding' },
+            { num: '02', title: 'Stratégie de Communication', desc: 'Une direction claire pour que chaque action de communication serve un objectif précis.', anchor: 'strategie' },
+            { num: '03', title: 'Création de Contenu', desc: "Des vidéos qui captent l'attention et racontent ton histoire.", anchor: 'contenu-video' },
+            { num: '04', title: 'Community Management', desc: "Je gère tes réseaux pour que ta communauté grandisse sans que tu t'en occupes.", anchor: 'community-management' },
+            { num: '05', title: 'Création de Site Web', desc: 'Un site moderne, rapide et pensé pour convertir tes visiteurs en clients.', anchor: 'site-web' },
+            { num: '06', title: 'SEO & Visibilité en ligne', desc: 'Être trouvé sur Google par les bonnes personnes, au bon moment.', anchor: 'seo' },
+          ].map(({ num, title, desc, anchor }) => (
+            <div
               key={anchor}
-              href={`/services#${anchor}`}
-              className="group flex flex-col gap-3 p-6 rounded-2xl border border-brand-deep/10 hover:border-brand-deep/30 hover:bg-brand-deep/5 transition-all duration-200"
+              className="flex items-center gap-6 rounded-2xl bg-white px-6 py-5 shadow-sm min-w-0"
             >
-              <span className="text-2xl">{emoji}</span>
-              <p className="font-display font-bold text-brand-deep text-[17px] leading-tight group-hover:text-brand-mid transition-colors">{title}</p>
-              <p className="font-body font-light text-[12px] text-brand-deep/60 leading-relaxed">{desc}</p>
-              <span className="font-body text-[11px] text-brand-mid uppercase tracking-[0.1em] mt-auto">Découvrir</span>
-            </Link>
+              <div className="flex items-baseline gap-8 min-w-0 w-full">
+                <span
+                  className="text-brand-mid uppercase tracking-[0.15em] font-poppins font-medium inline-block shrink-0"
+                  style={{ fontSize: 'clamp(11px, 1.1vw, 14px)', minWidth: 32 }}
+                >
+                  {num}
+                </span>
+                <div className="min-w-0">
+                  <h3
+                    className="text-brand-deep leading-tight"
+                    style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(18px, 2vw, 26px)' }}
+                  >
+                    {title}
+                  </h3>
+                  <p className="font-poppins text-[13px] text-brand-deep/50 mt-1 truncate">{desc}</p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-10 md:hidden">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 bg-brand-deep text-brand-cream font-body text-[12px] uppercase tracking-[0.12em] px-8 py-4 rounded-full hover:opacity-80 transition-opacity"
+            className="inline-flex items-center gap-2 bg-brand-deep text-brand-cream font-poppins text-[12px] uppercase tracking-[0.12em] px-8 py-4 rounded-full hover:opacity-80 transition-opacity"
           >
             Découvrir mes services
           </Link>
         </div>
-      </section>
-
-      {/* ── CTA CONTACT ── */}
-      <section className="px-8 py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-t border-brand-deep/10">
-        <div>
-          <h2
-            className="font-display font-black text-brand-deep leading-[0.9]"
-            style={{ fontSize: 'clamp(36px, 5vw, 64px)' }}
-          >
-            Parlons de votre{' '}
-            <span className="text-brand-yellow">projet.</span>
-          </h2>
         </div>
-        <div className="flex flex-col gap-4">
-          <p className="eyebrow">Basée à Bordeaux, disponible partout</p>
+      </section>
+      </SectionReveal>
+
+      {/* ── CONTENU ── */}
+      <SectionReveal>
+      <section className="px-8 md:px-20 pt-24 pb-16">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-16 flex items-end justify-between gap-6">
+            <div>
+              <p className="eyebrow mb-4">Création de contenu</p>
+              <TypewriterHeading
+                className="text-brand-deep leading-[0.9] -ml-1"
+                style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(32px, 4.5vw, 56px)' }}
+                segments={[
+                  { text: 'Un aperçu de mon ' },
+                  { text: 'contenu.', className: 'text-brand-mid' },
+                ]}
+              />
+            </div>
+            <Link
+              href="/creation-de-contenu"
+              className="hidden md:inline-flex items-center gap-2 font-poppins text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors shrink-0"
+            >
+              Tous les contenus <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </div>
+
+        <div className="-mx-8 md:-mx-20 px-5 md:px-10">
+          <FeaturedContent />
+        </div>
+
+        <div className="flex justify-center mt-10 md:hidden">
+          <Link
+            href="/creation-de-contenu"
+            className="inline-flex items-center gap-2 bg-brand-deep text-brand-cream font-poppins text-[12px] uppercase tracking-[0.12em] px-8 py-4 rounded-full hover:opacity-80 transition-opacity"
+          >
+            Voir tout le contenu
+          </Link>
+        </div>
+      </section>
+      </SectionReveal>
+
+      {/* ── FAQ ── */}
+      <SectionReveal>
+      <section
+        className="px-8 md:px-20 pt-24 pb-24"
+        style={{ background: 'linear-gradient(to bottom, white, rgba(43,97,107,0.16) 14%, rgba(43,97,107,0.16) 89%, white)' }}
+      >
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-10">
+            <p className="eyebrow mb-4">Questions fréquentes</p>
+            <TypewriterHeading
+              className="text-brand-deep leading-[0.9] -ml-1"
+              style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(32px, 4.5vw, 56px)' }}
+              segments={[
+                { text: 'Des ' },
+                { text: 'questions ?', className: 'text-brand-mid' },
+              ]}
+            />
+          </div>
+
+          <FAQAccordion />
+
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-5">
+            <p className="font-poppins text-[14px] text-brand-deep/60 sm:whitespace-nowrap">
+              Une autre question ? Je réponds avec plaisir, écris-moi directement.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-brand-deep text-brand-cream font-poppins text-[12px] uppercase tracking-[0.12em] px-8 py-4 rounded-full hover:opacity-80 transition-opacity shrink-0"
+            >
+              Me contacter
+            </Link>
+          </div>
+        </div>
+      </section>
+      </SectionReveal>
+
+      {/* ── CTA FINAL ── */}
+      <SectionReveal>
+      <section className="relative overflow-hidden px-8 md:px-20 py-20 bg-white border-t border-brand-deep/10">
+        <video
+          src="/videos/hero-home.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.4 }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, transparent, #dde6e7 85%)' }}
+        />
+        <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-10">
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-4">On se lance ?</p>
+            <TypewriterHeading
+              className="text-brand-deep leading-[1.05]"
+              style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(30px, 4vw, 50px)' }}
+              segments={[
+                { text: 'Un projet en tête ?\n' },
+                { text: 'Donnons-lui le bon ' },
+                { text: 'cap.', className: 'text-brand-mid' },
+              ]}
+            />
+          </div>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-brand-yellow text-brand-deep font-body text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full w-fit hover:opacity-80 transition-opacity"
+            aria-label="Me contacter"
+            className="group flex items-center shrink-0 md:mr-12"
           >
-            Me contacter
+            <svg width="40" height="40" viewBox="0 0 20 20" fill="none" className="transition-transform duration-300 group-hover:translate-x-1.5">
+              <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="#2b616b" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </Link>
-          <p className="font-body text-[12px] text-brand-deep/50 mt-2">contact.edith.agency@gmail.com</p>
         </div>
       </section>
+      </SectionReveal>
     </>
   )
 }

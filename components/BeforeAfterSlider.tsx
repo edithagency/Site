@@ -4,10 +4,13 @@ import { useRef, useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 
 interface Props {
-  beforeImage: string
-  afterImage: string
+  beforeImage?: string
+  afterImage?: string
   beforeAlt?: string
   afterAlt?: string
+  aspect?: '16/9' | '4/5'
+  /** Hauteur max (px) à respecter — la largeur s'ajuste pour garder l'image entière, sans recadrage */
+  maxHeight?: number
 }
 
 export default function BeforeAfterSlider({
@@ -15,6 +18,8 @@ export default function BeforeAfterSlider({
   afterImage,
   beforeAlt = 'Avant',
   afterAlt = 'Après',
+  aspect = '16/9',
+  maxHeight,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState(50)
@@ -79,14 +84,23 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative w-full overflow-hidden rounded-2xl select-none"
-      style={{ aspectRatio: '16/9', cursor: dragging ? 'grabbing' : 'grab' }}
+      className="relative overflow-hidden rounded-2xl select-none mx-auto"
+      style={
+        maxHeight
+          ? { aspectRatio: aspect, height: maxHeight, width: 'auto', maxWidth: '100%', cursor: dragging ? 'grabbing' : 'grab' }
+          : { aspectRatio: aspect, width: '100%', cursor: dragging ? 'grabbing' : 'grab' }
+      }
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
     >
       {/* Image APRÈS (fond) */}
       <div className="absolute inset-0">
-        <Image src={afterImage} alt={afterAlt} fill className="object-cover" draggable={false} />
+        {afterImage
+          ? <Image src={afterImage} alt={afterAlt} fill className="object-cover" draggable={false} />
+          : <div className="w-full h-full bg-white flex items-center justify-center">
+              <span className="font-poppins text-[9px] uppercase tracking-[0.18em] text-brand-deep/30">Après</span>
+            </div>
+        }
       </div>
 
       {/* Image AVANT (masquée à droite du curseur) */}
@@ -94,18 +108,23 @@ export default function BeforeAfterSlider({
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <Image src={beforeImage} alt={beforeAlt} fill className="object-cover" draggable={false} />
+        {beforeImage
+          ? <Image src={beforeImage} alt={beforeAlt} fill className="object-cover" draggable={false} />
+          : <div className="w-full h-full bg-white flex items-center justify-center">
+              <span className="font-poppins text-[9px] uppercase tracking-[0.18em] text-brand-deep/40">Avant</span>
+            </div>
+        }
       </div>
 
       {/* Ligne verticale */}
       <div
-        className="absolute top-0 bottom-0 w-[2px] bg-brand-cream/90 shadow-[0_0_12px_rgba(0,0,0,0.25)]"
+        className="absolute top-0 bottom-0 w-[2px] bg-white/90 shadow-[0_0_12px_rgba(0,0,0,0.25)]"
         style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
       />
 
       {/* Bouton curseur */}
       <div
-        className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-brand-cream shadow-lg flex items-center justify-center gap-1 z-10"
+        className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-center gap-1 z-10"
         style={{ left: `${position}%` }}
       >
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
@@ -115,7 +134,7 @@ export default function BeforeAfterSlider({
 
       {/* Label AVANT */}
       <div
-        className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-body uppercase tracking-[0.14em] text-brand-cream bg-brand-deep/50 backdrop-blur-sm transition-opacity duration-300"
+        className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-poppins uppercase tracking-[0.14em] text-brand-deep bg-white/90 backdrop-blur-sm transition-opacity duration-300"
         style={{ opacity: position > 10 ? 1 : 0 }}
       >
         Avant
@@ -123,7 +142,7 @@ export default function BeforeAfterSlider({
 
       {/* Label APRÈS */}
       <div
-        className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-body uppercase tracking-[0.14em] text-brand-cream bg-brand-deep/50 backdrop-blur-sm transition-opacity duration-300"
+        className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-poppins uppercase tracking-[0.14em] text-brand-deep bg-white/90 backdrop-blur-sm transition-opacity duration-300"
         style={{ opacity: position < 90 ? 1 : 0 }}
       >
         Après
@@ -131,7 +150,7 @@ export default function BeforeAfterSlider({
 
       {/* Hint "glissez" si pas encore utilisé */}
       {!hinted && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-body uppercase tracking-[0.14em] text-brand-cream bg-brand-deep/40 backdrop-blur-sm pointer-events-none">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-poppins uppercase tracking-[0.14em] text-brand-cream bg-brand-deep/40 backdrop-blur-sm pointer-events-none">
           ← glissez →
         </div>
       )}

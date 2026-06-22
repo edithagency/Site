@@ -3,7 +3,9 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { clients } from '@/data/clients'
 import ClientCard from '@/components/ClientCard'
-import StatsCounter from '@/components/StatsCounter'
+import PageHero from '@/components/PageHero'
+import SectionReveal from '@/components/SectionReveal'
+import TypewriterHeading from '@/components/TypewriterHeading'
 
 const FranceMap = dynamic(() => import('@/components/FranceMap'), {
   ssr: false,
@@ -11,105 +13,98 @@ const FranceMap = dynamic(() => import('@/components/FranceMap'), {
 })
 
 export const metadata: Metadata = {
-  title: 'Projets & Clients | Freelance Communication Bordeaux Paris | Edith Agency',
+  title: 'Projets & Clients | Freelance Communication Bordeaux Paris | Sea More Agency',
   description: 'Mes projets clients en communication et branding à Bordeaux, Paris et en Europe.',
   openGraph: {
-    title: 'Projets & Clients | Freelance Communication Bordeaux Paris | Edith Agency',
+    title: 'Projets & Clients | Freelance Communication Bordeaux Paris | Sea More Agency',
     description: 'Mes projets clients en communication et branding à Bordeaux, Paris et en Europe.',
     locale: 'fr_FR',
     type: 'website',
   },
 }
 
-const offsets = ['0px', '40px', '20px', '60px', '0px', '32px']
-
 export default function ProjetsPage() {
   return (
     <>
-      {/* Hero avec image */}
-      <section className="relative pt-32 pb-0 overflow-hidden">
-        {/* Image pleine largeur */}
-        <div className="relative w-full page-hero-banner bg-brand-deep/25 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-cream/90" />
-          <div className="absolute bottom-0 left-0 px-8 pb-16">
-            <h1
-              className="font-display font-black text-brand-deep leading-[0.9]"
-              style={{ fontSize: 'clamp(44px, 7vw, 80px)' }}
-            >
-              <span className="block" style={{ whiteSpace: 'nowrap' }}>Les marques que j'ai</span>
-              <span className="block text-brand-yellow">façonnées.</span>
-            </h1>
+      {/* Hero */}
+      <PageHero
+        backgroundVideo="/videos/accueil-hero.mp4"
+        title="Mes Projets"
+        titleFontSize="clamp(30px, 4.8vw, 74px)"
+        taglineBelow="Des courants créatifs qui laissent une trace."
+        overlayOpacity={25}
+      />
+
+      <SectionReveal>
+      <section className="pt-20 pb-16">
+        <div className="px-8 md:px-20">
+          <div className="max-w-[1400px] mx-auto mb-12">
+            <p className="eyebrow mb-3">Projets récents</p>
+            <TypewriterHeading
+              className="text-brand-deep leading-[0.9]"
+              style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(32px, 4.5vw, 56px)' }}
+              segments={[
+                { text: 'Ce que je fais ' },
+                { text: 'vraiment.', className: 'text-brand-mid' },
+              ]}
+            />
           </div>
         </div>
 
-        {/* Mot script flottant */}
-        <span
-          className="absolute top-40 right-16 font-script text-brand-yellow hidden md:block"
-          style={{ fontSize: 'clamp(28px, 3vw, 40px)', transform: 'rotate(-4deg)' }}
-        >
-          mes créations.
-        </span>
-      </section>
-
-      {/* Intro */}
-      <section className="px-8 pt-12 pb-6">
-        <p className="font-body font-light text-[15px] text-brand-deep/60 max-w-sm leading-relaxed">
-          Branding, social media, création de contenu : chaque projet est une collaboration unique à Bordeaux et en France.
-        </p>
-      </section>
-
-      {/* Grille irrégulière */}
-      <section className="px-8 pb-24">
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-0 items-start">
-          {clients.map((client, i) => (
-            <ClientCard
-              key={client.slug}
-              client={client}
-              style={{ marginTop: offsets[i % offsets.length] }}
-            />
-          ))}
+        <div id="projets" className="px-8 md:px-20">
+          <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-12">
+            {clients.map((client) => (
+              <ClientCard key={client.slug} client={client} />
+            ))}
+          </div>
         </div>
       </section>
-
-      {/* ── STATS ── */}
-      <div className="mb-8">
-        <StatsCounter />
-      </div>
+      </SectionReveal>
 
       {/* ── CARTE ── */}
-      <FranceMap />
+      <FranceMap showCounter={false} eyebrow="Bordeaux & au-delà" title="Des projets qui voyagent." titleAccent="voyagent." />
 
-      {/* ── CTA ── */}
-      <section className="mx-8 mb-24 rounded-2xl bg-brand-deep px-10 py-14 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <div>
-          <p className="eyebrow text-brand-mid mb-4">Bordeaux & partout en France</p>
-          <h2 className="font-display font-black text-brand-cream leading-[0.9]"
-              style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>
-            Votre projet mérite{' '}
-            <span className="text-brand-yellow"
-                 >
-              mieux.
-            </span>
-          </h2>
-          <p className="font-body font-light text-brand-cream/60 text-[15px] leading-relaxed mt-4 max-w-xs">
-            Une idée, un brief, ou juste l'envie de discuter ? Je suis là.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3 md:items-end">
+      {/* ── CTA FINAL ── */}
+      <SectionReveal>
+      <section className="relative overflow-hidden px-8 md:px-20 py-20 bg-white border-t border-brand-deep/10">
+        <video
+          src="/videos/hero-home.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.4 }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, transparent, #dde6e7 85%)' }}
+        />
+        <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-10">
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-4">On se lance ?</p>
+            <TypewriterHeading
+              className="text-brand-deep leading-[1.05]"
+              style={{ fontFamily: "'The Seasons', serif", fontWeight: 700, fontSize: 'clamp(30px, 4vw, 50px)' }}
+              segments={[
+                { text: 'Un projet en tête ?\n' },
+                { text: 'Donnons-lui le bon ' },
+                { text: 'cap.', className: 'text-brand-mid' },
+              ]}
+            />
+          </div>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-brand-yellow text-brand-deep font-body text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full hover:opacity-80 transition-opacity w-fit"
+            aria-label="Me contacter"
+            className="group flex items-center shrink-0 md:mr-12"
           >
-            Démarrer un projet
-          </Link>
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 border border-brand-cream/30 text-brand-cream font-body text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full hover:bg-brand-cream/10 transition-colors w-fit"
-          >
-            Voir les services
+            <svg width="40" height="40" viewBox="0 0 20 20" fill="none" className="transition-transform duration-300 group-hover:translate-x-1.5">
+              <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="#2b616b" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </Link>
         </div>
       </section>
+      </SectionReveal>
     </>
   )
 }

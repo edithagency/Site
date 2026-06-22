@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── THE SEASONS — police locale
+   Dépose les fichiers dans /public/fonts/
+   Sources : TheSeasons-Regular.woff2 + TheSeasons-Regular.woff
+   Téléchargeable sur : https://www.behance.net/gallery/104024783/The-Seasons-Free-Font */
+@font-face {
+  font-family: 'The Seasons';
+  src: url('/fonts/TheSeasons-Regular.ttf') format('truetype'),
+       url('/fonts/TheSeasons-Regular.woff2') format('woff2'),
+       url('/fonts/TheSeasons-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-deep:   #2b616b;
   --color-mid:    #66a2ad;
@@ -10,11 +24,11 @@
 }
 
 html {
-  background-color: #e7e3dd;
+  background-color: #ffffff;
 }
 
 body {
-  background-color: #e7e3dd;
+  background-color: #ffffff;
   color: #2b616b;
   font-family: var(--font-body), sans-serif;
 }
@@ -27,6 +41,11 @@ a[class*="rounded-full"] {
 .highlight {
   animation: highlightPulse 1.5s ease-out forwards;
   border-radius: 16px;
+}
+
+@keyframes cursorBlink {
+  0%, 50%  { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 @keyframes highlightPulse {
@@ -88,7 +107,7 @@ a[class*="rounded-full"] {
 
 @layer utilities {
   .eyebrow {
-    @apply text-brand-mid uppercase tracking-[0.2em] text-[10px] font-body font-medium;
+    @apply text-brand-mid uppercase tracking-[0.2em] text-[10px] font-poppins font-medium;
   }
 
   .pill {
