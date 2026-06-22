@@ -51,7 +51,7 @@ export default function HomePage() {
       <SectionReveal>
       <section className="pt-20 pb-16 overflow-hidden">
         <div className="px-8 md:px-20">
-        <div className="max-w-[1400px] mx-auto mb-12 flex items-end justify-between">
+        <div className="max-w-[1400px] mx-auto mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
             <p className="eyebrow mb-3">Projets récents</p>
             <TypewriterHeading
@@ -65,7 +65,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/projets"
-            className="hidden md:inline-flex items-center gap-2 font-poppins text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors shrink-0"
+            className="inline-flex items-center gap-2 font-poppins text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors shrink-0"
           >
             Tous les projets <span aria-hidden>→</span>
           </Link>
@@ -84,7 +84,7 @@ export default function HomePage() {
         style={{ background: 'linear-gradient(to bottom, white, rgba(43,97,107,0.16) 24%, rgba(43,97,107,0.16) 89%, white)' }}
       >
         <div className="max-w-[1400px] mx-auto">
-        <div className="mb-10 flex items-end justify-between gap-6">
+        <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-6">
           <div>
             <p className="eyebrow mb-4">Ce que je propose</p>
             <TypewriterHeading
@@ -98,7 +98,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/services"
-            className="hidden md:inline-flex items-center gap-2 font-poppins text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors shrink-0"
+            className="inline-flex items-center gap-2 font-poppins text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors shrink-0"
           >
             Découvrir <span aria-hidden>→</span>
           </Link>
@@ -154,7 +154,7 @@ export default function HomePage() {
       <SectionReveal>
       <section className="px-8 md:px-20 pt-24 pb-16">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-16 flex items-end justify-between gap-6">
+          <div className="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-6">
             <div>
               <p className="eyebrow mb-4">Création de contenu</p>
               <TypewriterHeading
@@ -168,7 +168,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/creation-de-contenu"
-              className="hidden md:inline-flex items-center gap-2 font-poppins text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors shrink-0"
+              className="inline-flex items-center gap-2 font-poppins text-[11px] uppercase tracking-[0.12em] text-brand-deep/60 hover:text-brand-deep transition-colors shrink-0"
             >
               Tous les contenus <span aria-hidden>→</span>
             </Link>

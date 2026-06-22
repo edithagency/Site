@@ -42,6 +42,7 @@ export default function ClientPage({ params }: Props) {
         leftImage={client.bannerImage ?? client.coverImage}
         rightImage={client.gallery[0] ?? client.coverImage}
         title={client.name}
+        titleFontSize="clamp(28px, 4.8vw, 64px)"
         tags={client.tags}
         subtitle={`${client.location ? `${client.location} · ` : ''}${client.year}`}
         caption={shortDesc}

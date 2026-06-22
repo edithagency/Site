@@ -17,9 +17,11 @@ const GAP    = 20
 const SPEED  = 0.6  // px par frame
 
 export default function ClientsLoopSlider({ clients, currentSlug, className = '', fadeColor = '#e7e3dd' }: Props) {
-  const trackRef = useRef<HTMLDivElement>(null)
-  const posRef   = useRef(0)
-  const rafRef   = useRef<number>(0)
+  const trackRef    = useRef<HTMLDivElement>(null)
+  const posRef       = useRef(0)
+  const rafRef       = useRef<number>(0)
+  const draggingRef  = useRef(false)
+  const lastXRef     = useRef(0)
 
   // Triple le tableau pour une boucle sans couture
   const items = [...clients, ...clients, ...clients]
@@ -30,9 +32,10 @@ export default function ClientsLoopSlider({ clients, currentSlug, className = ''
     posRef.current = totalW
 
     function tick() {
-      posRef.current += SPEED
-      // Quand on atteint la fin de la 2e copie, on revient au début de la 2e
-      if (posRef.current >= totalW * 2) posRef.current -= totalW
+      if (!draggingRef.current) posRef.current += SPEED
+      // Boucle sans fin dans les deux sens (auto-scroll ou glissement au doigt)
+      while (posRef.current >= totalW * 2) posRef.current -= totalW
+      while (posRef.current < 0) posRef.current += totalW
       if (trackRef.current) {
         trackRef.current.style.transform = `translateX(${-posRef.current}px)`
       }
@@ -42,6 +45,20 @@ export default function ClientsLoopSlider({ clients, currentSlug, className = ''
     rafRef.current = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(rafRef.current)
   }, [totalW])
+
+  function onTouchStart(e: React.TouchEvent) {
+    draggingRef.current = true
+    lastXRef.current = e.touches[0].clientX
+  }
+  function onTouchMove(e: React.TouchEvent) {
+    if (!draggingRef.current) return
+    const x = e.touches[0].clientX
+    posRef.current += lastXRef.current - x
+    lastXRef.current = x
+  }
+  function onTouchEnd() {
+    draggingRef.current = false
+  }
 
   return (
     <section className={`py-10 overflow-hidden border-t border-brand-deep/8 ${className}`}>
@@ -55,7 +72,13 @@ export default function ClientsLoopSlider({ clients, currentSlug, className = ''
         </h2>
       </div>
 
-      <div className="relative">
+      <div
+        className="relative"
+        style={{ touchAction: 'pan-y' }}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: `linear-gradient(to right, ${fadeColor}, transparent)` }} />
         <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: `linear-gradient(to left, ${fadeColor}, transparent)` }} />

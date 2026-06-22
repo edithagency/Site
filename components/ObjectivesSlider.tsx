@@ -72,8 +72,12 @@ export default function ObjectivesSlider({ objectives, ongoing }: Props) {
     return () => track.removeEventListener('transitionend', handleTransitionEnd)
   }, [vActive, n])
 
-  // Largeur des cartes : 5 cartes + 4 gaps dans la largeur du container
-  const CARD_W  = containerW > 0 ? Math.floor((containerW - 4 * GAP) / 5) : 280
+  // Largeur des cartes : 1 carte sur mobile (petits aperçus des voisines), 5 cartes + 4 gaps au-delà
+  const CARD_W  = containerW > 0
+    ? containerW < 640
+      ? Math.floor(containerW * 0.8)
+      : Math.floor((containerW - 4 * GAP) / 5)
+    : 280
   const slotH   = MAX_H + 12 + TITLE_H + DESC_H
   const trackOffset = containerW > 0
     ? containerW / 2 - vActive * (CARD_W + GAP) - CARD_W / 2

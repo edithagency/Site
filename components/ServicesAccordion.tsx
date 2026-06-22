@@ -154,7 +154,7 @@ export default function ServicesAccordion() {
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     style={{ overflow: 'hidden' }}
                   >
-                    <div className="flex items-end justify-between gap-10 pb-10" style={{ paddingLeft: 120 }}>
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-10 pb-10 pl-0 sm:pl-[120px]">
                       <ul className="space-y-4">
                         {service.deliverables.map((item, idx) => (
                           <motion.li
@@ -171,7 +171,7 @@ export default function ServicesAccordion() {
                       </ul>
 
                       {'sites' in service && service.sites && (
-                        <div className="flex flex-wrap justify-end gap-3 shrink-0">
+                        <div className="flex flex-wrap justify-start sm:justify-end gap-3 shrink-0">
                           {service.sites.map((site) => (
                             <Link
                               key={site.href}

@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import ScrollDownArrow from '@/components/ScrollDownArrow'
@@ -41,6 +44,29 @@ export default function PageHero({
   buttonHref = '#',
   overlayOpacity = 45,
 }: PageHeroProps) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  /* Certains navigateurs mobiles (iOS Safari) n'enclenchent pas l'autoplay
+     même avec les attributs autoplay/muted/playsInline posés en JSX — on
+     force explicitement la propriété + .play() une fois le média monté. */
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el) return
+    el.muted = true
+    const playPromise = el.play()
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        const resume = () => {
+          el.play().catch(() => {})
+          document.removeEventListener('touchstart', resume)
+          document.removeEventListener('click', resume)
+        }
+        document.addEventListener('touchstart', resume, { once: true })
+        document.addEventListener('click', resume, { once: true })
+      })
+    }
+  }, [backgroundVideo])
+
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
 
@@ -48,11 +74,13 @@ export default function PageHero({
       <div className="absolute inset-0">
         {backgroundVideo ? (
           <video
+            ref={videoRef}
             src={backgroundVideo}
             autoPlay
             loop
             muted
             playsInline
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ filter: `brightness(${videoBrightness}) contrast(1.06) saturate(1.1)` }}
           />
