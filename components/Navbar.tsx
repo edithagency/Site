@@ -88,31 +88,27 @@ export default function Navbar() {
           <button
             onClick={() => setOpen(!open)}
             aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className="md:hidden flex flex-col justify-center gap-[6px] w-8 h-8 shrink-0"
-            style={{
-              filter: transparent
-                ? 'drop-shadow(0 0 1px rgba(0,0,0,0.9)) drop-shadow(0 0 1px rgba(0,0,0,0.9)) drop-shadow(0 1px 3px rgba(0,0,0,0.6))'
-                : 'none',
-            }}
+            className="md:hidden flex flex-col justify-center items-center gap-[6px] w-10 h-10 rounded-full shrink-0 transition-colors duration-300"
+            style={{ background: transparent ? '#ffffff' : '#2b616b' }}
           >
             <span
-              className="block h-0.5 origin-center transition-transform duration-300"
+              className="block h-0.5 w-5 origin-center transition-transform duration-300"
               style={{
-                background: transparent ? 'white' : '#2b616b',
+                background: transparent ? '#2b616b' : '#e7e3dd',
                 transform: open ? 'translateY(7px) rotate(45deg)' : 'none',
               }}
             />
             <span
-              className="block h-0.5 transition-opacity duration-300"
+              className="block h-0.5 w-5 transition-opacity duration-300"
               style={{
-                background: transparent ? 'white' : '#2b616b',
+                background: transparent ? '#2b616b' : '#e7e3dd',
                 opacity: open ? 0 : 1,
               }}
             />
             <span
-              className="block h-0.5 origin-center transition-transform duration-300"
+              className="block h-0.5 w-5 origin-center transition-transform duration-300"
               style={{
-                background: transparent ? 'white' : '#2b616b',
+                background: transparent ? '#2b616b' : '#e7e3dd',
                 transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none',
               }}
             />
