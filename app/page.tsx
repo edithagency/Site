@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
     description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
+    siteName: 'Sea More Agency',
     locale: 'fr_FR',
     type: 'website',
     images: ['/images/og-image.png'],

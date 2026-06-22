@@ -18,8 +18,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Projets & Clients | Freelance Communication Bordeaux Paris | Sea More Agency',
     description: 'Mes projets clients en communication et branding à Bordeaux, Paris et en Europe.',
+    siteName: 'Sea More Agency',
     locale: 'fr_FR',
     type: 'website',
+    images: ['/images/og-image.png'],
   },
 }
 
