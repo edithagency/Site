@@ -43,7 +43,7 @@ export default function HomePage() {
         title="Sea More Agency"
         titleImage="/images/logo.png"
         lead="Voir au-delà pour révéler votre potentiel"
-        leadSmall="VIDEO - COMMUNICATION - SITE WEB"
+        leadSmall={<>VIDEO - COMMUNICATION<br className="sm:hidden" /> - SITE WEB</>}
         overlayOpacity={25}
       />
 

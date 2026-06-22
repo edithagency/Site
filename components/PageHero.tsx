@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import ScrollDownArrow from '@/components/ScrollDownArrow'
@@ -16,7 +16,7 @@ interface PageHeroProps {
   titleFontSize?: string // override de la taille du titre texte
   tags?: string[]       // services/catégories en pills, affichés au-dessus du titre
   lead?: string         // phrase d'accroche en majuscules, police The Seasons
-  leadSmall?: string    // ligne secondaire sous l'accroche, même police, plus petite
+  leadSmall?: ReactNode  // ligne secondaire sous l'accroche, même police, plus petite
   taglineBelow?: string // ligne en majuscules sous le titre, même typo que leadSmall
   subtitle?: string     // lieu · date
   caption?: string    // description courte
