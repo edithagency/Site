@@ -37,11 +37,11 @@ export default function ContactPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const subject = encodeURIComponent(form.sujet || 'Message depuis le site seamore.fr')
+    const subject = encodeURIComponent(form.sujet || 'Message depuis le site seamoreagency.com')
     const body = encodeURIComponent(
       `Nom : ${form.nom}\nEmail : ${form.email}\n\nMessage :\n${form.message}`
     )
-    window.location.href = `mailto:contact.edith.agency@gmail.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:contact@seamoreagency.com?subject=${subject}&body=${body}`
     setSent(true)
   }
 
@@ -67,8 +67,8 @@ export default function ContactPage() {
               <p className="font-poppins font-bold text-brand-deep text-2xl mb-3">Votre client mail s'est ouvert !</p>
               <p className="font-poppins text-[15px] text-brand-deep/60 leading-relaxed">
                 Votre message est pré-rempli. Il ne reste plus qu'à envoyer depuis votre boîte mail.<br />
-                <a href="mailto:contact.edith.agency@gmail.com" className="text-brand-mid hover:text-brand-deep transition-colors underline underline-offset-2">
-                  Ou écrivez directement à contact.edith.agency@gmail.com
+                <a href="mailto:contact@seamoreagency.com" className="text-brand-mid hover:text-brand-deep transition-colors underline underline-offset-2">
+                  Ou écrivez directement à contact@seamoreagency.com
                 </a>
               </p>
             </div>
@@ -119,10 +119,10 @@ export default function ContactPage() {
           <div>
             <p className="eyebrow mb-3">Email direct</p>
             <a
-              href="mailto:contact.edith.agency@gmail.com"
+              href="mailto:contact@seamoreagency.com"
               className="font-poppins font-bold text-brand-deep text-xl hover:text-brand-mid transition-colors"
             >
-              contact.edith.agency@gmail.com
+              contact@seamoreagency.com
             </a>
           </div>
           <div>

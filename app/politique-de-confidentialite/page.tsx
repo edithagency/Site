@@ -20,7 +20,7 @@ export default function PolitiqueConfidentialitePage() {
 
         <div>
           <p>
-            Sea More Agency attache une grande importance à la protection de vos données personnelles. Cette politique de confidentialité explique quelles données sont collectées sur le site seamore.fr, pourquoi, comment elles sont utilisées et quels sont vos droits.
+            Sea More Agency attache une grande importance à la protection de vos données personnelles. Cette politique de confidentialité explique quelles données sont collectées sur le site seamoreagency.com, pourquoi, comment elles sont utilisées et quels sont vos droits.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export default function PolitiqueConfidentialitePage() {
             <li><strong>Nom commercial :</strong> Sea More Agency</li>
             <li><strong>Exploitant :</strong> Apouey Edith (auto-entrepreneur)</li>
             <li><strong>Adresse :</strong> Mérignac, France</li>
-            <li><strong>Email :</strong> <span className="text-red-500 font-medium">À COMPLÉTER</span></li>
+            <li><strong>Email :</strong> <a href="mailto:contact@seamoreagency.com" className="text-brand-mid underline">contact@seamoreagency.com</a></li>
           </ul>
         </div>
 

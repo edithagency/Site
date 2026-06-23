@@ -20,14 +20,14 @@ export default function MentionsLegalesPage() {
 
         <div>
           <h2 className="text-brand-deep text-2xl mb-4" style={{ fontFamily: "'The Seasons', serif", fontWeight: 700 }}>1. Éditeur du site</h2>
-          <p>Le site <strong>seamore.fr</strong> est édité par :</p>
+          <p>Le site <strong>seamoreagency.com</strong> est édité par :</p>
           <ul className="mt-3 space-y-1 pl-4">
             <li><strong>Nom commercial :</strong> Sea More Agency</li>
             <li><strong>Nom et prénom de l'exploitant :</strong> Apouey Edith</li>
             <li><strong>Statut juridique :</strong> Auto-entrepreneur</li>
             <li><strong>SIRET :</strong> 904 070 372 00027</li>
             <li><strong>Adresse du siège :</strong> Mérignac, France</li>
-            <li><strong>Email :</strong> <span className="text-red-500 font-medium">À COMPLÉTER</span></li>
+            <li><strong>Email :</strong> <a href="mailto:contact@seamoreagency.com" className="text-brand-mid underline">contact@seamoreagency.com</a></li>
             <li><strong>Responsable de la publication :</strong> Apouey Edith</li>
           </ul>
         </div>
@@ -44,7 +44,7 @@ export default function MentionsLegalesPage() {
         <div>
           <h2 className="text-brand-deep text-2xl mb-4" style={{ fontFamily: "'The Seasons', serif", fontWeight: 700 }}>3. Propriété intellectuelle</h2>
           <p>
-            L'ensemble du contenu présent sur le site seamore.fr (textes, images, graphismes, logo, identité visuelle, structure, code) est protégé par le droit de la propriété intellectuelle.
+            L'ensemble du contenu présent sur le site seamoreagency.com (textes, images, graphismes, logo, identité visuelle, structure, code) est protégé par le droit de la propriété intellectuelle.
           </p>
           <p className="mt-2">
             Sauf mention contraire, ces éléments sont la propriété exclusive de Sea More Agency. Toute reproduction, représentation, modification, publication ou adaptation, totale ou partielle, est interdite sans autorisation écrite préalable.
@@ -57,7 +57,7 @@ export default function MentionsLegalesPage() {
         <div>
           <h2 className="text-brand-deep text-2xl mb-4" style={{ fontFamily: "'The Seasons', serif", fontWeight: 700 }}>4. Responsabilité</h2>
           <p>
-            Sea More Agency s'efforce de fournir sur le site seamore.fr des informations aussi précises et à jour que possible.
+            Sea More Agency s'efforce de fournir sur le site seamoreagency.com des informations aussi précises et à jour que possible.
           </p>
           <p className="mt-2">
             Cependant, l'éditeur ne saurait être tenu responsable des omissions, inexactitudes ou carences dans la mise à jour des informations, qu'elles soient de son fait ou du fait de tiers partenaires.
