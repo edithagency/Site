@@ -171,13 +171,6 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center font-body text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full transition-opacity hover:opacity-80 mt-2"
-            style={{ background: '#2b616b', color: '#e7e3dd' }}
-          >
-            Me contacter
-          </Link>
         </div>
       </div>
     </nav>
