@@ -82,7 +82,7 @@ export const ugcItems: UGCItem[] = [
   },
   {
     id: 'burga',
-    brand: 'BURGA',
+    brand: 'Burga',
     category: 'Beauté & Bien-être',
     videoUrl: 'https://www.youtube.com/embed/Fhpk2IL4RvA?rel=0',
   },
@@ -94,20 +94,20 @@ export const ugcItems: UGCItem[] = [
   },
   {
     id: 'burga-2',
-    brand: 'BURGA',
+    brand: 'Burga',
     category: 'Beauté & Bien-être',
     videoUrl: 'https://www.youtube.com/embed/mI3cl2yX5sA?rel=0',
   },
   {
     id: 'superdry',
-    brand: 'SUPERDRY',
+    brand: 'Superdry',
     category: 'Beauté & Bien-être',
     videoUrl: 'https://www.youtube.com/embed/J_k-8tIOTUk?rel=0',
     description: 'Bordeaux, France',
   },
   {
     id: 'garancia',
-    brand: 'GARANCIA',
+    brand: 'Garancia',
     category: 'Beauté & Bien-être',
     videoUrl: 'https://www.youtube.com/embed/EKR_xMVPx7M?rel=0',
   },

@@ -22,7 +22,7 @@ const CLIENTS = [
   { id: 6,  nom: 'Centre Commercial Mériadeck', ville: 'Bordeaux, France',              lat: 44.8378, lng: -0.5812, type: 'vidéo',  lien: '/creation-de-contenu#meriadeck',                 youtubeId: 'YaSk1hCU52w' },
   { id: 7,  nom: 'Quiz Room Paris',             ville: 'Paris, France',                 lat: 48.8534, lng: 2.3389,  type: 'vidéo',  lien: '/creation-de-contenu#quizz-room',                youtubeId: 'KWCNliP9neQ' },
   { id: 8,  nom: 'Dopio Malto',                 ville: 'Bordeaux, France',              lat: 44.8523, lng: -0.6012, type: 'vidéo',  lien: '/creation-de-contenu#dopio-malto',               youtubeId: 'Gdsu5btorHM' },
-  { id: 34, nom: 'SUPERDRY',                    ville: 'Bordeaux, France',              lat: 44.8442, lng: -0.5728, type: 'vidéo',  lien: '/creation-de-contenu#superdry',                  youtubeId: 'J_k-8tIOTUk' },
+  { id: 34, nom: 'Superdry',                    ville: 'Bordeaux, France',              lat: 44.8442, lng: -0.5728, type: 'vidéo',  lien: '/creation-de-contenu#superdry',                  youtubeId: 'J_k-8tIOTUk' },
   { id: 35, nom: 'OXXY Club',                   ville: 'Bordeaux, France',              lat: 44.8355, lng: -0.5765, type: 'vidéo',  lien: '/creation-de-contenu#oxxy',                      youtubeId: '2zp7arQTa4U' },
   { id: 39, nom: 'La Belle en Folie',           ville: 'Bordeaux, France',              lat: 44.8401, lng: -0.5756, type: 'vidéo',  lien: '/creation-de-contenu#la-belle-en-folie',         youtubeId: 'jRQakJEC04g' },
   // ── BAYONNE ───────────────────────────────────────────────────────────
@@ -57,11 +57,11 @@ const CLIENTS = [
   { id: 28, nom: 'Merci Internet',              ville: 'Paris, France',                 lat: 48.8823, lng: 2.3489,  type: 'vidéo',  lien: '/creation-de-contenu#merci-internet',            youtubeId: '5q_Qv_EgZy0' },
   { id: 32, nom: 'Armelle Crêperie',           ville: 'Paris, France',                 lat: 48.8678, lng: 2.3445,  type: 'vidéo',  lien: '/creation-de-contenu#armelle-creperie',          youtubeId: 'Kog2u-FPI1A' },
   { id: 33, nom: 'Quartier Général',           ville: 'Paris, France',                 lat: 48.8512, lng: 2.3434,  type: 'vidéo',  lien: '/creation-de-contenu#quartier-general',          youtubeId: 'WPw6Ees54Dc' },
-  { id: 38, nom: 'GARANCIA',                   ville: 'Paris, France',                 lat: 48.8530, lng: 2.2611,  type: 'vidéo',  lien: '/creation-de-contenu#garancia',                  youtubeId: 'EKR_xMVPx7M' },
+  { id: 38, nom: 'Garancia',                   ville: 'Paris, France',                 lat: 48.8530, lng: 2.2611,  type: 'vidéo',  lien: '/creation-de-contenu#garancia',                  youtubeId: 'EKR_xMVPx7M' },
   // ── MOUGINS ───────────────────────────────────────────────────────────
   { id: 37, nom: 'Luxéol',                     ville: 'Mougins, France',               lat: 43.6004, lng: 6.9989,  type: 'vidéo',  lien: '/creation-de-contenu#luxeol',                    youtubeId: 'Ka8LJPUqw6s' },
   // ── LITUANIE ──────────────────────────────────────────────────────────
-  { id: 36, nom: 'BURGA',                      ville: 'Kaunas, Lituanie',              lat: 54.8985, lng: 23.9036, type: 'vidéo',  lien: '/creation-de-contenu#burga',                     youtubeId: 'Fhpk2IL4RvA' },
+  { id: 36, nom: 'Burga',                      ville: 'Kaunas, Lituanie',              lat: 54.8985, lng: 23.9036, type: 'vidéo',  lien: '/creation-de-contenu#burga',                     youtubeId: 'Fhpk2IL4RvA' },
 ]
 
 /* Vue initiale — Europe + Maghreb */

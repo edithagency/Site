@@ -34,15 +34,26 @@ export default function ContactPage() {
     message: '',
   })
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const subject = encodeURIComponent(form.sujet || 'Message depuis le site seamoreagency.com')
-    const body = encodeURIComponent(
-      `Nom : ${form.nom}\nEmail : ${form.email}\n\nMessage :\n${form.message}`
-    )
-    window.location.href = `mailto:contact@seamoreagency.com?subject=${subject}&body=${body}`
-    setSent(true)
+    setSending(true)
+    setError(false)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('failed')
+      setSent(true)
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -64,12 +75,10 @@ export default function ContactPage() {
           <p className="eyebrow mb-8">Écrire un message</p>
           {sent ? (
             <div className="py-12">
-              <p className="font-poppins font-bold text-brand-deep text-2xl mb-3">Votre client mail s'est ouvert !</p>
+              <p className="font-poppins font-bold text-brand-deep text-2xl mb-3">Message envoyé !</p>
               <p className="font-poppins text-[15px] text-brand-deep/60 leading-relaxed">
-                Votre message est pré-rempli. Il ne reste plus qu'à envoyer depuis votre boîte mail.<br />
-                <a href="mailto:contact@seamoreagency.com" className="text-brand-mid hover:text-brand-deep transition-colors underline underline-offset-2">
-                  Ou écrivez directement à contact@seamoreagency.com
-                </a>
+                Merci de m'avoir contacté, je reviens vers vous très prochainement.<br />
+                Un email de confirmation vient de vous être envoyé.
               </p>
             </div>
           ) : (
@@ -104,11 +113,18 @@ export default function ContactPage() {
                   className="w-full bg-white border border-brand-deep/30 rounded-lg px-4 py-3 font-poppins text-[15px] text-brand-deep placeholder:text-brand-deep/30 focus:outline-none focus:border-brand-deep transition-colors resize-none"
                 />
               </div>
+              {error && (
+                <p className="font-poppins text-[13px] text-red-500">
+                  Une erreur est survenue, réessayez ou écrivez directement à{' '}
+                  <a href="mailto:contact@seamoreagency.com" className="underline">contact@seamoreagency.com</a>.
+                </p>
+              )}
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 bg-brand-deep text-brand-cream font-poppins text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full hover:opacity-80 transition-opacity"
+                disabled={sending}
+                className="inline-flex items-center gap-2 bg-brand-deep text-brand-cream font-poppins text-[12px] uppercase tracking-[0.12em] px-7 py-4 rounded-full hover:opacity-80 transition-opacity disabled:opacity-50"
               >
-                Envoyer
+                {sending ? 'Envoi…' : 'Envoyer'}
               </button>
             </form>
           )}
