@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import PageHero from '@/components/PageHero'
@@ -37,6 +37,12 @@ export default function ContactPage() {
   const [sending, setSending] = useState(false)
   const [error, setError] = useState(false)
 
+  useEffect(() => {
+    if (!sent) return
+    const timeout = setTimeout(() => setSent(false), 5000)
+    return () => clearTimeout(timeout)
+  }, [sent])
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setSending(true)
@@ -49,6 +55,7 @@ export default function ContactPage() {
       })
       if (!res.ok) throw new Error('failed')
       setSent(true)
+      setForm({ nom: '', email: '', sujet: '', message: '' })
     } catch {
       setError(true)
     } finally {
@@ -73,16 +80,7 @@ export default function ContactPage() {
         {/* Formulaire */}
         <div>
           <p className="eyebrow mb-8">Écrire un message</p>
-          {sent ? (
-            <div className="py-12">
-              <p className="font-poppins font-bold text-brand-deep text-2xl mb-3">Message envoyé !</p>
-              <p className="font-poppins text-[15px] text-brand-deep/60 leading-relaxed">
-                Merci de m'avoir contacté, je reviens vers vous très prochainement.<br />
-                Un email de confirmation vient de vous être envoyé.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
               {[
                 { id: 'nom', label: 'Nom', type: 'text', placeholder: 'Votre nom' },
                 { id: 'email', label: 'Email', type: 'email', placeholder: 'votre@email.fr' },
@@ -127,7 +125,6 @@ export default function ContactPage() {
                 {sending ? 'Envoi…' : 'Envoyer'}
               </button>
             </form>
-          )}
         </div>
 
         {/* Infos contact */}
@@ -170,6 +167,37 @@ export default function ContactPage() {
 
       {/* ── CLIENTS ── */}
       <ClientsLoopSlider clients={clients} className="bg-[#dde6e7]" fadeColor="#dde6e7" />
+
+      {/* ── MINI FENÊTRE DE CONFIRMATION ── */}
+      <div
+        className="fixed bottom-6 right-6 z-[100] max-w-sm transition-all duration-300"
+        style={{
+          opacity: sent ? 1 : 0,
+          transform: sent ? 'translateY(0)' : 'translateY(16px)',
+          pointerEvents: sent ? 'auto' : 'none',
+        }}
+      >
+        <div className="bg-brand-deep text-brand-cream rounded-2xl shadow-lg px-6 py-5 flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0 mt-0.5">
+            <circle cx="10" cy="10" r="9" stroke="#f4db75" strokeWidth="1.4" />
+            <path d="M6 10.5L8.5 13L14 7" stroke="#f4db75" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <div>
+            <p className="font-poppins font-medium text-[14px] leading-snug">
+              Merci de m'avoir contacté, je reviens vers vous très prochainement.
+            </p>
+          </div>
+          <button
+            onClick={() => setSent(false)}
+            aria-label="Fermer"
+            className="shrink-0 text-brand-cream/50 hover:text-brand-cream transition-colors"
+          >
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+              <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </>
   )
 }

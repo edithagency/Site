@@ -28,14 +28,6 @@ export async function POST(request: Request) {
       text: `Nom : ${nom}\nEmail : ${email}\nSujet : ${sujet || '(non précisé)'}\n\nMessage :\n${message}`,
     })
 
-    // Accusé de réception automatique au visiteur
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: email,
-      subject: 'Merci pour votre message — Sea More Agency',
-      text: `Bonjour ${nom},\n\nMerci de m'avoir contacté, je reviens vers vous très prochainement.\n\nÀ très vite,\nSea More Agency`,
-    })
-
     return NextResponse.json({ ok: true })
   } catch (error) {
     console.error('Erreur envoi email :', error)
