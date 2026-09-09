@@ -246,7 +246,7 @@ export default function PageHero({
 
         {caption && (
           <p
-            className="line-clamp-2"
+            className="line-clamp-3"
             style={{
               fontFamily: 'var(--font-poppins), sans-serif',
               fontSize: 'clamp(14px, 1.4vw, 18px)',
@@ -255,6 +255,7 @@ export default function PageHero({
               marginBottom: 48,
               maxWidth: 780,
               lineHeight: 1.65,
+              whiteSpace: 'pre-line',
             }}
           >
             {caption}

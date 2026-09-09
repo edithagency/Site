@@ -235,4 +235,37 @@ export const clients: Client[] = [
       { kind: 'video', youtubeId: 'MSGzTlCQWbE', label: 'Les Bûcherons', location: 'Bordeaux, France' },
     ],
   },
+  {
+    slug: 'fornello-24',
+    name: 'Fornello 24',
+    category: 'Social Media & Création de contenu',
+    year: 'depuis 2026',
+    heroImage: '/images/clients/fornello-24-hero.png',
+    description: 'Traiteur pizza événementiel à Bordeaux, Fornello 24 installe un véritable\nbar à pizzas sur le lieu de vos événements.',
+    objectives: [
+      {
+        title: 'Gestion des réseaux sociaux',
+        description: 'Animation quotidienne des réseaux sociaux',
+        image: '/images/clients/fornello-24-obj1.png',
+      },
+      {
+        title: 'Création de contenu vidéo & photo',
+        description: 'Captation des prestations sur événements pour incarner l\'univers Fornello 24.',
+        image: '/images/clients/fornello-24-obj2.png',
+      },
+    ],
+    ongoing: true,
+    hideGallery: true,
+    coverImage: '/images/clients/fornello-24.jpg',
+    cardImage: '/images/clients/fornello-24-card.jpg',
+    gallery: [],
+    tags: ['Création de Contenu', 'Community Management'],
+    location: 'Bordeaux, France',
+    media: [
+      { kind: 'video', youtubeId: 'k82Iljsm2gY', label: 'Fornello 24', location: 'Bordeaux, France' },
+      { kind: 'photo', src: '/images/clients/fornello-24-media-photo1.jpg', label: 'Fornello 24', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'h2xKDPIxtuM', label: 'Fornello 24', location: 'Bordeaux, France' },
+      { kind: 'photo', src: '/images/clients/fornello-24-media-photo2.png', label: 'Fornello 24', location: 'Bordeaux, France' },
+    ],
+  },
 ]

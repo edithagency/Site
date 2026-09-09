@@ -10,6 +10,30 @@ export interface UGCItem {
 
 export const ugcItems: UGCItem[] = [
   {
+    id: 'jean-paul-gaultier',
+    brand: 'Jean Paul Gaultier',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/kzcBx8H3N9I?rel=0',
+  },
+  {
+    id: 'loreal',
+    brand: "L'Oréal",
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/cNd6KpNQkd0?rel=0',
+  },
+  {
+    id: 'carolina-herrera',
+    brand: 'Carolina Herrera',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/wUaBK0RC3PE?rel=0',
+  },
+  {
+    id: 'excel-coiffure',
+    brand: 'Excel Coiffure',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/GorktC_cDek?rel=0',
+  },
+  {
     id: 'canope',
     brand: 'Canopé',
     category: 'Restauration',
@@ -97,6 +121,12 @@ export const ugcItems: UGCItem[] = [
     brand: 'Burga',
     category: 'Beauté & Bien-être',
     videoUrl: 'https://www.youtube.com/embed/mI3cl2yX5sA?rel=0',
+  },
+  {
+    id: 'jae-rituel',
+    brand: 'JAE Rituel',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/U7espgVPFHY?rel=0',
   },
   {
     id: 'superdry',
