@@ -36,8 +36,13 @@ export default function ObjectivesSlider({ objectives, ongoing }: Props) {
   const [vActive, setVActive] = useState(n)
   const [animated, setAnimated] = useState(true)
   const [containerW, setContainerW] = useState(0)
+  // Les copies servant à la boucle infinie ne reçoivent leur texte qu'après hydratation :
+  // le HTML servi à Google ne contient chaque mission qu'une seule fois (pas de contenu dupliqué).
+  const [mounted, setMounted] = useState(false)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
     if (!wrapperRef.current) return
@@ -125,6 +130,8 @@ export default function ObjectivesSlider({ objectives, ongoing }: Props) {
             const isActive = dist === 0
             const num      = (vi % n) + 1
             const visible  = dist <= 2
+            const isClone  = vi < n || vi >= 2 * n
+            const showText = !isClone || mounted
 
             const cardTop = (MAX_H - cardHeight(dist)) / 2
             const textTop = cardTop + cardHeight(dist) + 12
@@ -132,6 +139,7 @@ export default function ObjectivesSlider({ objectives, ongoing }: Props) {
             return (
               <div
                 key={vi}
+                aria-hidden={isClone || undefined}
                 onClick={() => { setAnimated(true); setVActive(vi) }}
                 style={{
                   width: CARD_W,
@@ -158,12 +166,12 @@ export default function ObjectivesSlider({ objectives, ongoing }: Props) {
                 >
                   {obj.image && (
                     <>
-                      <Image src={obj.image} alt={obj.title} fill className="object-cover" sizes="280px" />
+                      <Image src={obj.image} alt={isClone ? '' : obj.title} fill className="object-cover" sizes="280px" />
                       <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(43,97,107,0) 0%, rgba(43,97,107,0.22) 100%)' }} />
                     </>
                   )}
 
-                  {obj.image && obj.link && (
+                  {obj.image && obj.link && showText && (
                     <Link
                       href={obj.link.url}
                       target="_blank"
@@ -207,7 +215,7 @@ export default function ObjectivesSlider({ objectives, ongoing }: Props) {
                       transition: animated ? 'font-size 0.4s ease, color 0.4s ease' : 'none',
                     }}
                   >
-                    {obj.title}
+                    {showText && obj.title}
                   </p>
                   <p
                     className="font-poppins font-light leading-relaxed"
@@ -217,7 +225,7 @@ export default function ObjectivesSlider({ objectives, ongoing }: Props) {
                       transition: animated ? 'opacity 0.4s ease' : 'none',
                     }}
                   >
-                    {obj.description}
+                    {showText && obj.description}
                   </p>
                 </div>
               </div>

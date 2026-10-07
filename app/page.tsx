@@ -9,6 +9,7 @@ import FAQAccordion from '@/components/FAQAccordion'
 import FeaturedContent from '@/components/FeaturedContent'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/' },
   title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
   description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
   openGraph: {

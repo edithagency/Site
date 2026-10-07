@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/creation-de-contenu' },
   title: 'Contenus Vidéo & Photo pour Marques à Bordeaux et Paris | Sea More Agency',
   description: 'Découvrez mes réalisations vidéo et photo pour des marques à Bordeaux, Paris et à l\'international.',
   openGraph: {

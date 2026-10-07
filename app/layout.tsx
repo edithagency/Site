@@ -4,6 +4,8 @@ import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import JsonLd from '@/components/JsonLd'
+import { organizationSchema } from '@/data/schema'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -66,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${playfair.variable} ${dancing.variable} ${dmSans.variable} ${poppins.variable} ${theSeasons.variable}`}>
       <body>
+        <JsonLd data={organizationSchema} />
         <Navbar />
         <main>{children}</main>
         <Footer />

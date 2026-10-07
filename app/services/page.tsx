@@ -5,6 +5,7 @@ import ClientsLoopSlider from '@/components/ClientsLoopSlider'
 import { clients } from '@/data/clients'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/services' },
   title: 'Services Communication, Vidéo & Branding à Bordeaux et Paris | Sea More Agency',
   description: 'Découvrez mes services en communication : vidéo, branding, community management, site web et SEO. Disponible à Bordeaux, Paris et partout en France.',
   openGraph: {

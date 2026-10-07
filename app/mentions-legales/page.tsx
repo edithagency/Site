@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import BackButton from '@/components/BackButton'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/mentions-legales' },
   title: 'Mentions légales — Sea More Agency',
   description: 'Mentions légales du site Sea More Agency.',
 }

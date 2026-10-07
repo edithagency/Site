@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/contact' },
   title: 'Contact | Freelance Communication à Bordeaux et Paris | Sea More Agency',
   description: 'Contactez-moi pour un projet de communication à Bordeaux ou Paris. Réponse rapide garantie.',
   openGraph: {

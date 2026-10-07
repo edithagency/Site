@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import BackButton from '@/components/BackButton'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/politique-de-confidentialite' },
   title: 'Politique de confidentialité — Sea More Agency',
   description: 'Politique de confidentialité et protection des données personnelles — Sea More Agency.',
 }

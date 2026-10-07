@@ -13,6 +13,7 @@ const FranceMap = dynamic(() => import('@/components/FranceMap'), {
 })
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/projets' },
   title: 'Projets & Clients | Freelance Communication Bordeaux Paris | Sea More Agency',
   description: 'Mes projets clients en communication et branding à Bordeaux, Paris et en Europe.',
   openGraph: {
