@@ -65,6 +65,7 @@ export default function CreationDeContenuPage() {
         backgroundVideo="/videos/services-hero.mp4"
         overlayOpacity={25}
         title="Création de contenu"
+        titleKicker="Photo & vidéo à Bordeaux"
         titleFontSize="clamp(30px, 4.8vw, 74px)"
         taglineBelow="Des contenus qui prennent le large et captent l'attention."
       />

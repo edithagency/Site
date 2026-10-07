@@ -10,11 +10,11 @@ import FeaturedContent from '@/components/FeaturedContent'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
-  title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
-  description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
+  title: 'Agence de communication à Bordeaux | Sea More Agency',
+  description: 'Sea More Agency, agence de communication à Bordeaux : stratégie, création de contenu photo et vidéo, social media, branding et site web. Disponible aussi à Paris.',
   openGraph: {
-    title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
-    description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
+    title: 'Agence de communication à Bordeaux | Sea More Agency',
+    description: 'Sea More Agency, agence de communication à Bordeaux : stratégie, création de contenu photo et vidéo, social media, branding et site web. Disponible aussi à Paris.',
     siteName: 'Sea More Agency',
     locale: 'fr_FR',
     type: 'website',
@@ -22,34 +22,21 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sea More Agency | Freelance Communication & Vidéo à Bordeaux et Paris',
-    description: 'Freelance en communication basée à Bordeaux et Paris. Création de contenu vidéo, community management, branding et stratégie pour les marques locales.',
+    title: 'Agence de communication à Bordeaux | Sea More Agency',
+    description: 'Sea More Agency, agence de communication à Bordeaux : stratégie, création de contenu photo et vidéo, social media, branding et site web. Disponible aussi à Paris.',
     images: ['/images/og-image.png'],
-  },
-}
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'Sea More Agency',
-  description: 'Freelance en communication, création de contenu vidéo, branding et community management',
-  areaServed: ['Bordeaux', 'Paris', 'France'],
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Bordeaux',
-    addressCountry: 'FR',
   },
 }
 
 export default function HomePage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* ── HERO ── */}
       {/* Remplacer leftImage et rightImage par les vraies photos quand disponibles */}
       <PageHero
         backgroundVideo="/videos/projets-hero.mp4"
         title="Sea More Agency"
+        titleKicker="Agence de communication · Bordeaux"
         titleImage="/images/logo.png"
         lead="Voir au-delà pour révéler votre potentiel"
         leadSmall={<>VIDEO - COMMUNICATION<br className="sm:hidden" /> - SITE WEB</>}

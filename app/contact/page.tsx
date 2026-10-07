@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import PageHero from '@/components/PageHero'
@@ -27,6 +28,15 @@ const socials = [
 ]
 
 export default function ContactPage() {
+  return (
+    <Suspense fallback={null}>
+      <ContactPageInner />
+    </Suspense>
+  )
+}
+
+function ContactPageInner() {
+  const searchParams = useSearchParams()
   const [form, setForm] = useState({
     nom: '',
     email: '',
@@ -36,6 +46,11 @@ export default function ContactPage() {
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
   const [error, setError] = useState(false)
+
+  useEffect(() => {
+    const sujet = searchParams.get('sujet')
+    if (sujet) setForm((f) => ({ ...f, sujet }))
+  }, [searchParams])
 
   useEffect(() => {
     if (!sent) return
@@ -69,6 +84,7 @@ export default function ContactPage() {
       <PageHero
         backgroundVideo="/videos/hero-home.mp4"
         title="Prêts à embarquer ?"
+        titleKicker="Contact · Agence de communication à Bordeaux"
         titleFontSize="clamp(30px, 4.8vw, 74px)"
         taglineBelow="Parlons de votre prochaine destination."
         overlayOpacity={25}

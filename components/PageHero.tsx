@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode, type CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import ScrollDownArrow from '@/components/ScrollDownArrow'
@@ -14,6 +14,7 @@ interface PageHeroProps {
   title: string
   titleImage?: string   // si défini, remplace visuellement le titre texte par ce logo
   titleFontSize?: string // override de la taille du titre texte
+  titleKicker?: string  // petite ligne mot-clé SEO affichée au-dessus du titre, incluse dans le H1
   tags?: string[]       // services/catégories en pills, affichés au-dessus du titre
   lead?: string         // phrase d'accroche en majuscules, police The Seasons
   leadSmall?: ReactNode  // ligne secondaire sous l'accroche, même police, plus petite
@@ -25,6 +26,16 @@ interface PageHeroProps {
   overlayOpacity?: number
 }
 
+const kickerStyle: CSSProperties = {
+  fontFamily: 'var(--font-poppins), sans-serif',
+  fontSize: 'clamp(11px, 1.1vw, 14px)',
+  fontWeight: 500,
+  letterSpacing: '0.28em',
+  textTransform: 'uppercase',
+  color: 'white',
+  marginBottom: 18,
+}
+
 export default function PageHero({
   backgroundImage,
   backgroundVideo,
@@ -34,6 +45,7 @@ export default function PageHero({
   title,
   titleImage,
   titleFontSize,
+  titleKicker,
   tags,
   lead,
   leadSmall,
@@ -161,7 +173,8 @@ export default function PageHero({
 
         {titleImage ? (
           <h1 style={{ marginBottom: subtitle ? 20 : 60 }}>
-            <span className="sr-only">{title}</span>
+            {titleKicker && <span className="block" style={kickerStyle}>{titleKicker}</span>}
+            <span className="sr-only">{titleKicker ? `${title} — ` : title}</span>
             <Image
               src={titleImage}
               alt={title}
@@ -174,7 +187,10 @@ export default function PageHero({
             />
           </h1>
         ) : (
-          <h1
+          <h1 style={{ marginBottom: taglineBelow ? 44 : subtitle ? 20 : 44 }}>
+            {titleKicker && <span className="block" style={kickerStyle}>{titleKicker}</span>}
+            <span
+            className="block"
             style={{
               fontFamily: "'The Seasons', serif",
               fontSize: titleFontSize ?? 'clamp(26px, 4.2vw, 64px)',
@@ -183,10 +199,10 @@ export default function PageHero({
               fontWeight: 700,
               whiteSpace: titleFontSize ? 'normal' : 'nowrap',
               textTransform: 'uppercase',
-              marginBottom: taglineBelow ? 44 : subtitle ? 20 : 44,
             }}
           >
             {title}
+            </span>
           </h1>
         )}
 

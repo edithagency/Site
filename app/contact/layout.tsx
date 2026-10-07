@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/contact' },
-  title: 'Contact | Freelance Communication à Bordeaux et Paris | Sea More Agency',
-  description: 'Contactez-moi pour un projet de communication à Bordeaux ou Paris. Réponse rapide garantie.',
+  title: 'Contact | Agence de communication à Bordeaux – Sea More',
+  description: 'Un projet de communication, de contenu ou de site web ? Contactez Sea More Agency, agence de communication basée à Bordeaux, disponible partout en France.',
   openGraph: {
-    title: 'Contact | Freelance Communication à Bordeaux et Paris | Sea More Agency',
-    description: 'Contactez-moi pour un projet de communication à Bordeaux ou Paris. Réponse rapide garantie.',
+    title: 'Contact | Agence de communication à Bordeaux – Sea More',
+    description: 'Un projet de communication, de contenu ou de site web ? Contactez Sea More Agency, agence de communication basée à Bordeaux, disponible partout en France.',
     siteName: 'Sea More Agency',
     locale: 'fr_FR',
     type: 'website',

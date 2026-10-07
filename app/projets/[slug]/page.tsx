@@ -21,7 +21,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const client = clients.find((c) => c.slug === params.slug)
   if (!client) return {}
-  const title = `${client.name} — ${client.tags.join(', ')} | Sea More Agency`
+  const city = client.location?.split(',')[0]
+  const title = `${client.name} — ${client.tags.join(', ')}${city ? ` à ${city}` : ''} | Sea More`
   const image = client.heroImage ?? client.coverImage
   return {
     title,

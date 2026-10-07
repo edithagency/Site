@@ -14,11 +14,11 @@ const FranceMap = dynamic(() => import('@/components/FranceMap'), {
 
 export const metadata: Metadata = {
   alternates: { canonical: '/projets' },
-  title: 'Projets & Clients | Freelance Communication Bordeaux Paris | Sea More Agency',
-  description: 'Mes projets clients en communication et branding à Bordeaux, Paris et en Europe.',
+  title: 'Projets & réalisations | Sea More Agency Bordeaux',
+  description: 'Branding, social media, création de contenu et sites web : découvrez les projets réalisés par Sea More Agency à Bordeaux, Paris et en Europe.',
   openGraph: {
-    title: 'Projets & Clients | Freelance Communication Bordeaux Paris | Sea More Agency',
-    description: 'Mes projets clients en communication et branding à Bordeaux, Paris et en Europe.',
+    title: 'Projets & réalisations | Sea More Agency Bordeaux',
+    description: 'Branding, social media, création de contenu et sites web : découvrez les projets réalisés par Sea More Agency à Bordeaux, Paris et en Europe.',
     siteName: 'Sea More Agency',
     locale: 'fr_FR',
     type: 'website',
@@ -33,6 +33,7 @@ export default function ProjetsPage() {
       <PageHero
         backgroundVideo="/videos/accueil-hero.mp4"
         title="Mes Projets"
+        titleKicker="Réalisations en communication à Bordeaux et ailleurs"
         titleFontSize="clamp(30px, 4.8vw, 74px)"
         taglineBelow="Des courants créatifs qui laissent une trace."
         overlayOpacity={25}
