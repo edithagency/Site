@@ -84,9 +84,8 @@ function ContactPageInner() {
       <PageHero
         backgroundVideo="/videos/hero-home.mp4"
         title="Prêts à embarquer ?"
-        titleKicker="Contact · Agence de communication à Bordeaux"
         titleFontSize="clamp(30px, 4.8vw, 74px)"
-        taglineBelow="Parlons de votre prochaine destination."
+        taglineBelow="Agence de communication à Bordeaux : parlons de votre prochaine destination."
         overlayOpacity={25}
       />
 

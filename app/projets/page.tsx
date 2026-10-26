@@ -33,9 +33,8 @@ export default function ProjetsPage() {
       <PageHero
         backgroundVideo="/videos/accueil-hero.mp4"
         title="Mes Projets"
-        titleKicker="Réalisations en communication à Bordeaux et ailleurs"
         titleFontSize="clamp(30px, 4.8vw, 74px)"
-        taglineBelow="Des courants créatifs qui laissent une trace."
+        taglineBelow="Des projets de communication à Bordeaux et ailleurs, qui laissent une trace."
         overlayOpacity={25}
       />
 
@@ -56,7 +55,7 @@ export default function ProjetsPage() {
         </div>
 
         <div id="projets" className="px-8 md:px-20">
-          <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-12">
+          <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
             {clients.map((client) => (
               <ClientCard key={client.slug} client={client} />
             ))}

@@ -36,10 +36,9 @@ export default function HomePage() {
       <PageHero
         backgroundVideo="/videos/projets-hero.mp4"
         title="Sea More Agency"
-        titleKicker="Agence de communication · Bordeaux"
+        titleKicker="Agence de communication à Bordeaux"
         titleImage="/images/logo.png"
         lead="Voir au-delà pour révéler votre potentiel"
-        leadSmall={<>VIDEO - COMMUNICATION<br className="sm:hidden" /> - SITE WEB</>}
         overlayOpacity={25}
       />
 

@@ -25,9 +25,8 @@ export default function ServicesPage() {
       <PageHero
         backgroundVideo="/videos/services-hero-2.mp4"
         title="Mes Services"
-        titleKicker="Services de communication à Bordeaux"
         titleFontSize="clamp(30px, 4.8vw, 74px)"
-        taglineBelow="Naviguer entre stratégie et création pour faire émerger votre marque."
+        taglineBelow="Stratégie et création à Bordeaux pour faire émerger votre marque."
         overlayOpacity={25}
       />
 

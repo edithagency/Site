@@ -14,7 +14,7 @@ interface PageHeroProps {
   title: string
   titleImage?: string   // si défini, remplace visuellement le titre texte par ce logo
   titleFontSize?: string // override de la taille du titre texte
-  titleKicker?: string  // petite ligne mot-clé SEO affichée au-dessus du titre, incluse dans le H1
+  titleKicker?: string  // ligne mot-clé SEO au-dessus du logo (titleImage), incluse dans le H1
   tags?: string[]       // services/catégories en pills, affichés au-dessus du titre
   lead?: string         // phrase d'accroche en majuscules, police The Seasons
   leadSmall?: ReactNode  // ligne secondaire sous l'accroche, même police, plus petite
@@ -28,12 +28,12 @@ interface PageHeroProps {
 
 const kickerStyle: CSSProperties = {
   fontFamily: 'var(--font-poppins), sans-serif',
-  fontSize: 'clamp(11px, 1.1vw, 14px)',
+  fontSize: 16,
   fontWeight: 500,
-  letterSpacing: '0.28em',
+  letterSpacing: '0.2em',
   textTransform: 'uppercase',
   color: 'white',
-  marginBottom: 18,
+  marginBottom: 60,
 }
 
 export default function PageHero({
@@ -187,8 +187,8 @@ export default function PageHero({
             />
           </h1>
         ) : (
-          <h1 style={{ marginBottom: taglineBelow ? 44 : subtitle ? 20 : 44 }}>
-            {titleKicker && <span className="block" style={kickerStyle}>{titleKicker}</span>}
+          // Le sous-titre fait partie du H1 : il porte le mot-clé SEO (ex. « … à Bordeaux »)
+          <h1 style={{ marginBottom: subtitle ? 20 : 44 }}>
             <span
             className="block"
             style={{
@@ -199,29 +199,27 @@ export default function PageHero({
               fontWeight: 700,
               whiteSpace: titleFontSize ? 'normal' : 'nowrap',
               textTransform: 'uppercase',
+              marginBottom: taglineBelow ? 44 : 0,
             }}
           >
             {title}
             </span>
+            {taglineBelow && (
+              <span
+                className="block font-poppins whitespace-normal lg:whitespace-nowrap mx-auto"
+                style={{
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                  fontSize: 'clamp(13px, 1.8vw, 21px)',
+                  letterSpacing: '0.15em',
+                  color: 'white',
+                  maxWidth: '90vw',
+                }}
+              >
+                {taglineBelow}
+              </span>
+            )}
           </h1>
-        )}
-
-        {/* Ligne sous le titre */}
-        {taglineBelow && (
-          <p
-            className="font-poppins whitespace-normal sm:whitespace-nowrap"
-            style={{
-              textTransform: 'uppercase',
-              fontWeight: 500,
-              fontSize: 'clamp(13px, 1.8vw, 21px)',
-              letterSpacing: '0.15em',
-              color: 'white',
-              marginBottom: subtitle ? 20 : 44,
-              maxWidth: '90vw',
-            }}
-          >
-            {taglineBelow}
-          </p>
         )}
 
 
