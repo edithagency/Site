@@ -1,6 +1,7 @@
 'use client'
 
 import 'leaflet/dist/leaflet.css'
+import 'maplibre-gl/dist/maplibre-gl.css'
 import { useEffect, useRef, useState } from 'react'
 import TypewriterHeading from './TypewriterHeading'
 
@@ -256,11 +257,20 @@ export default function FranceMap({ showCounter = true, eyebrow, title, titleAcc
       /* Le zoom à la molette ne s'active qu'après un clic sur la carte */
       map.on('click', () => map.scrollWheelZoom.enable())
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19,
-      }).addTo(map)
+      /* Fond de carte OpenFreeMap (style « Positron », clair) : gratuit, sans clé ni compte,
+         usage commercial autorisé. Rendu vectoriel via MapLibre, branché dans Leaflet. */
+      const { maplibreGL } = await import('@maplibre/maplibre-gl-leaflet')
+      const baseLayer = maplibreGL({ style: 'https://tiles.openfreemap.org/styles/positron' }).addTo(map)
+
+      /* Noms de pays et de villes en français (repli sur le nom local s'il n'existe pas) */
+      const glMap = baseLayer.getMaplibreMap()
+      glMap.once('styledata', () => {
+        glMap.getStyle().layers.forEach((layer) => {
+          if (layer.type === 'symbol' && layer.layout?.['text-field']) {
+            glMap.setLayoutProperty(layer.id, 'text-field', ['coalesce', ['get', 'name:fr'], ['get', 'name']])
+          }
+        })
+      })
 
       L.control.zoom({ position: 'bottomright' }).addTo(map)
 
