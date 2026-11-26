@@ -34,6 +34,18 @@ export const ugcItems: UGCItem[] = [
     videoUrl: 'https://www.youtube.com/embed/GorktC_cDek?rel=0',
   },
   {
+    id: 'kerastase',
+    brand: 'Kérastase',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/8YBGkS5nhNc?rel=0',
+  },
+  {
+    id: 'ikita-paris',
+    brand: 'Ikita Paris',
+    category: 'Beauté & Bien-être',
+    videoUrl: 'https://www.youtube.com/embed/SDZNxSShjqI?rel=0',
+  },
+  {
     id: 'canope',
     brand: 'Canopé',
     category: 'Restauration',
@@ -294,6 +306,12 @@ export const ugcItems: UGCItem[] = [
     category: 'Voyage',
     videoUrl: 'https://www.youtube.com/embed/zBE32etkWQI?rel=0',
     description: 'Barcelone, Espagne',
+  },
+  {
+    id: 'tips-en-voyage',
+    brand: 'Tips en voyage',
+    category: 'Voyage',
+    videoUrl: 'https://www.youtube.com/embed/k3djTF-_IG8?rel=0',
   },
   {
     id: 'burgers-de-colette',
