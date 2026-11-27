@@ -51,6 +51,7 @@ const SERVICES = [
       'Maintenance, mises à jour et évolutions',
     ],
     sites: [
+      { label: 'Studio Jeanne', href: 'https://www.studio-jeanne.com/' },
       { label: 'Prod Daiki', href: 'https://www.prodbydaiki.com/' },
       { label: 'Itinéraire sur Mesure', href: 'https://www.itinerairesurmesure.fr/' },
     ],
