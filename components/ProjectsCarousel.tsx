@@ -90,7 +90,7 @@ export default function ProjectsCarousel({ clients }: Props) {
 
                 <p className="eyebrow mb-1">{client.category}</p>
                 <p className="text-brand-deep text-xl" style={{ fontFamily: "'The Seasons', serif", fontWeight: 400 }}>
-                  {client.name}
+                  {client.cardName ?? client.name}
                 </p>
               </Link>
             </motion.div>

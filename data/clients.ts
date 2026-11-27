@@ -39,6 +39,7 @@ export interface Mission {
 export interface Client {
   slug: string
   name: string
+  cardName?: string     // Nom affiché sur les cartes projets (si différent du nom complet)
   category: string
   year: string | number
   description: string
@@ -289,7 +290,7 @@ export const clients: Client[] = [
   // ↓ Nouveaux clients : à ajouter ici (après Prod Daiki)
   {
     slug: 'caroline-baroche-safti',
-    name: 'Caroline Baroche · Safti',
+    name: 'Caroline · Safti',
     intro: "Caroline Baroche, agente immobilière Safti à Bordeaux.",
     sector: 'Immobilier',
     category: 'Contenu & Réseaux sociaux',
@@ -314,16 +315,16 @@ export const clients: Client[] = [
     objectives: [],
     cardImage: '/images/clients/caroline-safti-card.jpg',
     coverImage: '/images/clients/caroline-safti-card.jpg',
-    heroImage: '/images/clients/caroline-safti-hero.jpg',
+    heroImage: '/images/clients/caroline-safti-hero-rue.jpg',
     gallery: [],
     tags: ['Stratégie', 'Contenu & Réseaux Sociaux'],
     discovery: { label: 'Découvrir', url: 'https://www.instagram.com/carolinebaroche_immobilier/', icon: 'instagram' as const },
     location: 'Bordeaux, France',
     media: [
-      { kind: 'video', youtubeId: 'HB-MV7WWCK4', label: 'Caroline Baroche · Safti', location: 'Bordeaux, France' },
-      { kind: 'video', youtubeId: '_SisQMVGzVs', label: 'Caroline Baroche · Safti', location: 'Bordeaux, France' },
-      { kind: 'video', youtubeId: 'v3DHCmX6fx8', label: 'Caroline Baroche · Safti', location: 'Bordeaux, France' },
-      { kind: 'video', youtubeId: 'bFzhzkeARlA', label: 'Caroline Baroche · Safti', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'HB-MV7WWCK4', label: 'Caroline · Safti', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: '_SisQMVGzVs', label: 'Caroline · Safti', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'v3DHCmX6fx8', label: 'Caroline · Safti', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'bFzhzkeARlA', label: 'Caroline · Safti', location: 'Bordeaux, France' },
     ],
   },
   {

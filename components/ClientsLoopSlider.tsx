@@ -126,7 +126,7 @@ export default function ClientsLoopSlider({ clients, currentSlug, className = ''
                 className="text-brand-deep group-hover:text-brand-mid transition-colors"
                 style={{ fontFamily: "'The Seasons', serif", fontWeight: 400, fontSize: 18 }}
               >
-                {client.name}
+                {client.cardName ?? client.name}
               </p>
             </Link>
           ))}
