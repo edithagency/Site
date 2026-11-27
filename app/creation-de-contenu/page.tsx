@@ -41,6 +41,9 @@ export default function CreationDeContenuPage() {
     'prod-daiki-2':          'prod-daiki',
     'librairie-de-florence': 'librairie-de-florence',
     'itineraire-sur-mesure': 'itineraire-sur-mesure',
+    'itineraire-sur-mesure-2': 'itineraire-sur-mesure',
+    'studio-jeanne':         'studio-jeanne',
+    'fornello-24':           'fornello-24',
   }
 
   const categories = ['Tout', ...ugcCategories]

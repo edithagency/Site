@@ -20,6 +20,7 @@ export interface Objective {
 /* ── Nouvelle page client : missions en accordéon ── */
 export interface MissionContent {
   kind: 'photo' | 'video' | 'beforeAfter'
+  fit?: 'contain'       // affiche l'image entière (ex : logo sur fond transparent)
   before?: string       // avant/après : image « avant »
   after?: string        // avant/après : image « après »
   src?: string          // photo, ou vidéo hébergée sur le site (.mp4)
@@ -86,7 +87,7 @@ export const clients: Client[] = [
         summary: "Conception et évolution continue du logo, des visuels et de la charte graphique pour une image de marque forte et cohérente.",
         content: [
           { kind: 'photo', src: '/images/clients/prod-daiki-obj1.png', alt: "Identité visuelle Prod Daiki" },
-          { kind: 'photo', src: '/images/clients/prod-daiki-profile.png', alt: "Visuel de profil Prod Daiki" },
+          { kind: 'photo', src: '/images/clients/prod-daiki-logo.png', fit: 'contain', alt: "Logo Prod Daiki" },
         ],
       },
       {
@@ -94,8 +95,11 @@ export const clients: Client[] = [
         summary: "Publication régulière de contenus adaptés à la scène musicale : clips, teasers, visuels de beats et actualités artiste.",
         link: { label: 'Chaîne YouTube', url: 'https://youtube.com/@proddaiki9037' },
         content: [
+          { kind: 'video', youtubeId: 'moi-8-sH8PA', alt: 'Vidéo Prod Daiki pour les réseaux sociaux' },
           { kind: 'photo', src: '/images/clients/prod-daiki-obj2.png', alt: "Contenus réseaux sociaux Prod Daiki" },
+          { kind: 'video', youtubeId: 'XULvni6XnT8', alt: 'Vidéo Prod Daiki pour les réseaux sociaux' },
           { kind: 'photo', src: '/images/clients/prod-daiki-phone.png', alt: "Contenus Prod Daiki sur mobile" },
+          { kind: 'video', youtubeId: 'uj6KS8eqrOU', alt: 'Vidéo Prod Daiki pour les réseaux sociaux' },
         ],
       },
       {
@@ -392,11 +396,11 @@ export const clients: Client[] = [
       {
         title: 'Contenu & réseaux sociaux',
         summary: "Animation quotidienne des réseaux sociaux et captation photo et vidéo des prestations sur événements, pour incarner l'univers Fornello 24.",
+        link: { label: 'Instagram', url: 'https://www.instagram.com/fornello.24/' },
         content: [
-          { kind: 'photo', src: '/images/clients/fornello-24-obj1.png', alt: "Réseaux sociaux Fornello 24" },
-          { kind: 'photo', src: '/images/clients/fornello-24-obj2.png', alt: "Contenu vidéo Fornello 24" },
-          { kind: 'photo', src: '/images/clients/fornello-24-media-photo1.jpg', alt: "Bar à pizzas Fornello 24" },
-          { kind: 'photo', src: '/images/clients/fornello-24-media-photo2.png', alt: "Pizzas Fornello 24" },
+          { kind: 'photo', src: '/images/clients/fornello-24-reseaux-1.jpg', alt: "Fornello 24 s'adapte à votre événement" },
+          { kind: 'photo', src: '/images/clients/fornello-24-reseaux-2.jpg', alt: "Les ingrédients de la pizza Fornello 24" },
+          { kind: 'photo', src: '/images/clients/fornello-24-reseaux-3.jpg', alt: "Pack Autonomie Fornello 24" },
         ],
       },
     ],
@@ -420,15 +424,16 @@ export const clients: Client[] = [
     ongoing: true,
     hideGallery: true,
     coverImage: '/images/clients/fornello-24.jpg',
-    cardImage: '/images/clients/fornello-24-card.jpg',
+    cardImage: '/images/clients/fornello-24-card-v2.jpg',
     gallery: [],
     tags: ['Stratégie', 'Contenu & Réseaux Sociaux'],
     location: 'Bordeaux, France',
+    discovery: { label: 'Découvrir', url: 'https://www.instagram.com/fornello.24/', icon: 'instagram' as const },
     media: [
-      { kind: 'video', youtubeId: 'k82Iljsm2gY', label: 'Fornello 24', location: 'Bordeaux, France' },
-      { kind: 'photo', src: '/images/clients/fornello-24-media-photo1.jpg', label: 'Fornello 24', location: 'Bordeaux, France' },
-      { kind: 'video', youtubeId: 'h2xKDPIxtuM', label: 'Fornello 24', location: 'Bordeaux, France' },
-      { kind: 'photo', src: '/images/clients/fornello-24-media-photo2.png', label: 'Fornello 24', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'wPUTozGyGcs', label: 'Fornello 24', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'umNsw_-io_s', label: 'Fornello 24', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'Lz7qbV0MJiA', label: 'Fornello 24', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'xckSZCuC4Ig', label: 'Fornello 24', location: 'Bordeaux, France' },
     ],
   },
   {
@@ -470,7 +475,7 @@ export const clients: Client[] = [
     media: [
       { kind: 'video', youtubeId: 'Cn6UlMrYQ-8', label: 'Studio Jeanne', location: 'Bordeaux, France' },
       { kind: 'video', youtubeId: 'ZHoe7I7Vb3M', label: 'Studio Jeanne', location: 'Bordeaux, France' },
-      { kind: 'video', youtubeId: 'hd-nhPcOhTE', label: 'Studio Jeanne', location: 'Bordeaux, France' },
+      { kind: 'video', src: '/videos/clients/studio-jeanne-decoratrice.mp4', poster: '/images/clients/studio-jeanne-video-decoratrice.jpg', label: 'Studio Jeanne', location: 'Bordeaux, France' },
       { kind: 'video', youtubeId: 'xRmlyvBy5F8', label: 'Studio Jeanne', location: 'Bordeaux, France' },
     ],
     location: 'Bordeaux, France',
@@ -493,7 +498,9 @@ export const clients: Client[] = [
           // À remplacer par les liens YouTube : { kind: 'video', src: '/videos/clients/studio-jeanne-chambres-jeunesse.mp4', poster: '/images/clients/studio-jeanne-video-chambres-jeunesse.jpg', alt: 'Reel projet chambres jeunesse' },
           // À remplacer par les liens YouTube : { kind: 'video', src: '/videos/clients/studio-jeanne-ca-ou-ca.mp4', poster: '/images/clients/studio-jeanne-video-ca-ou-ca.jpg', alt: 'Reel « Ça ou ça » Studio Jeanne' },
           // À remplacer par les liens YouTube : { kind: 'video', src: '/videos/clients/studio-jeanne-vrai-ou-faux.mp4', poster: '/images/clients/studio-jeanne-video-vrai-ou-faux.jpg', alt: 'Reel « Vrai ou faux » Studio Jeanne' },
+          { kind: 'video', youtubeId: 'Cn6UlMrYQ-8', alt: 'Vidéo Studio Jeanne pour les réseaux sociaux' },
           { kind: 'photo', src: '/images/clients/studio-jeanne-caroline.jpg', alt: "Caroline Canova, décoratrice d'intérieur à Bordeaux" },
+          { kind: 'video', youtubeId: 'ZHoe7I7Vb3M', alt: 'Vidéo Studio Jeanne pour les réseaux sociaux' },
         ],
       },
       {

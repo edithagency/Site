@@ -17,11 +17,11 @@ function Thumb({ item, onOpen, compact }: { item: MissionContent; onOpen: () => 
     <button
       onClick={onOpen}
       aria-label={isVideo ? `Lire : ${item.alt}` : `Voir : ${item.alt}`}
-      className={`relative block shrink-0 w-[100px] ${compact ? 'md:w-[112px]' : 'md:w-[140px]'} overflow-hidden rounded-[3px] bg-brand-deep/10 group/thumb`}
+      className={`relative block shrink-0 w-[100px] ${compact ? 'md:w-[112px]' : 'md:w-[140px]'} overflow-hidden rounded-[3px] ${item.fit === 'contain' ? '' : 'bg-brand-deep/10'} group/thumb`}
       style={{ aspectRatio: '4 / 5' }}
     >
       {cover && (
-        <Image src={cover} alt={item.alt} fill sizes="140px" className="object-cover transition-transform duration-500 group-hover/thumb:scale-105" />
+        <Image src={cover} alt={item.alt} fill sizes="140px" className={`${item.fit === 'contain' ? 'object-contain' : 'object-cover'} transition-transform duration-500 group-hover/thumb:scale-105`} />
       )}
       {item.kind === 'beforeAfter' && item.before && item.after && (
         <>
@@ -151,7 +151,7 @@ export default function MissionsAccordion({ missions }: Props) {
           const thumbs = mission.content && mission.content.length > 0 && (
             <motion.div
               key="thumbs"
-              className="flex flex-wrap md:flex-nowrap gap-3"
+              className="flex flex-wrap gap-3 md:max-w-[490px] xl:max-w-[620px] md:justify-end"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

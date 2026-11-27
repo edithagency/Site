@@ -1,7 +1,7 @@
 export interface UGCItem {
   id: string
   brand: string
-  category: 'Restauration' | 'Loisirs' | 'Établissement' | 'Beauté & Bien-être' | 'Culture' | 'Voyage'
+  category: 'Restauration' | 'Loisirs' | 'Établissement' | 'Beauté & Bien-être' | 'Culture' | 'Voyage' | 'Décoration'
   videoUrl?: string   // laisser vide pour les entrées photos uniquement
   thumbnail?: string  // chemin depuis /public — ex: '/images/ugc/nom-marque.jpg'
   logo?: string       // chemin depuis /public — ex: '/images/logos/nom-marque.png'
@@ -294,6 +294,20 @@ export const ugcItems: UGCItem[] = [
     description: 'Bordeaux, France',
   },
   {
+    id: 'studio-jeanne',
+    brand: 'Studio Jeanne',
+    category: 'Décoration',
+    videoUrl: 'https://www.youtube.com/embed/Cn6UlMrYQ-8?rel=0',
+    description: 'Bordeaux, France',
+  },
+  {
+    id: 'fornello-24',
+    brand: 'Fornello 24',
+    category: 'Restauration',
+    videoUrl: 'https://www.youtube.com/embed/wPUTozGyGcs?rel=0',
+    description: 'Bordeaux, France',
+  },
+  {
     id: 'itineraire-sur-mesure',
     brand: 'Itinéraire sur Mesure',
     category: 'Voyage',
@@ -350,4 +364,4 @@ export const ugcItems: UGCItem[] = [
   },
 ]
 
-export const ugcCategories = ['Restauration', 'Beauté & Bien-être', 'Loisirs', 'Établissement', 'Culture', 'Voyage'] as const
+export const ugcCategories = ['Restauration', 'Beauté & Bien-être', 'Loisirs', 'Établissement', 'Culture', 'Voyage', 'Décoration'] as const

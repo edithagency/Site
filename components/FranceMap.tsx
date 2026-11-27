@@ -26,6 +26,8 @@ const CLIENTS = [
   { id: 34, nom: 'Superdry',                    ville: 'Bordeaux, France',              lat: 44.8442, lng: -0.5728, type: 'vidéo',  lien: '/creation-de-contenu#superdry',                  youtubeId: 'J_k-8tIOTUk' },
   { id: 35, nom: 'OXXY Club',                   ville: 'Bordeaux, France',              lat: 44.8355, lng: -0.5765, type: 'vidéo',  lien: '/creation-de-contenu#oxxy',                      youtubeId: '2zp7arQTa4U' },
   { id: 39, nom: 'La Belle en Folie',           ville: 'Bordeaux, France',              lat: 44.8401, lng: -0.5756, type: 'vidéo',  lien: '/creation-de-contenu#la-belle-en-folie',         youtubeId: 'jRQakJEC04g' },
+  { id: 40, nom: 'Studio Jeanne',               ville: 'Bordeaux, France',              lat: 44.8395, lng: -0.5830, type: 'client', lien: '/projets/studio-jeanne',             youtubeId: 'Cn6UlMrYQ-8' },
+  { id: 41, nom: 'Fornello 24',                 ville: 'Bordeaux, France',              lat: 44.8460, lng: -0.5680, type: 'client', lien: '/projets/fornello-24',               youtubeId: 'wPUTozGyGcs' },
   // ── BAYONNE ───────────────────────────────────────────────────────────
   { id: 9,  nom: 'Les Burgers de Colette',      ville: 'Bayonne, France',               lat: 43.4929, lng: -1.4749, type: 'vidéo',  lien: '/creation-de-contenu#burgers-de-colette',        youtubeId: 'ol6a83A61Gw' },
   // ── PARIS ─────────────────────────────────────────────────────────────
