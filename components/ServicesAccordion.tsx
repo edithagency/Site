@@ -28,51 +28,31 @@ const SERVICES = [
     ],
   },
   {
-    id: 'contenu-video',
+    id: 'contenu-reseaux-sociaux',
     num: '03',
-    name: 'Création de Contenu',
+    name: 'Contenu & Réseaux Sociaux',
     deliverables: [
-      'Shooting vidéo (reels, stories, posts)',
-      'Montage & post-production',
-      'Motion design & habillage vidéo',
-      'Vidéo corporate & storytelling de marque',
-    ],
-  },
-  {
-    id: 'community-management',
-    num: '04',
-    name: 'Community Management',
-    deliverables: [
+      'Shooting photo & vidéo (reels, stories, posts)',
+      'Montage, post-production & habillage vidéo',
       'Gestion complète de tes réseaux sociaux',
-      'Création et planification du calendrier éditorial',
-      'Rédaction des captions & hashtags',
+      'Calendrier éditorial, captions & hashtags',
       'Reporting mensuel & analyse des performances',
     ],
   },
   {
-    id: 'site-web',
-    num: '05',
-    name: 'Création de Site Web',
+    id: 'site-web-seo',
+    num: '04',
+    name: 'Site Web & SEO',
     deliverables: [
       'Site vitrine moderne, responsive et pensé pour convertir',
       'Conception UX/UI soignée et cohérente avec ton identité',
-      "Intégration de formulaires, appels à l'action et outils de réservation",
+      'Optimisation technique (vitesse, structure, balises) et contenus pour Google',
+      'Référencement local (Google Business Profile, avis, citations)',
       'Maintenance, mises à jour et évolutions',
     ],
     sites: [
       { label: 'Prod Daiki', href: 'https://www.prodbydaiki.com/' },
       { label: 'Itinéraire sur Mesure', href: 'https://www.itinerairesurmesure.fr/' },
-    ],
-  },
-  {
-    id: 'seo',
-    num: '06',
-    name: 'SEO & Visibilité en ligne',
-    deliverables: [
-      'Audit SEO complet de ton site existant',
-      'Optimisation technique (vitesse, structure, balises)',
-      'Rédaction de contenus optimisés pour Google',
-      'Référencement local (Google My Business, avis, citations)',
     ],
   },
 ]
@@ -82,7 +62,14 @@ export default function ServicesAccordion() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const hash = window.location.hash.slice(1)
+    const raw = window.location.hash.slice(1)
+    const LEGACY: Record<string, string> = {
+      'contenu-video': 'contenu-reseaux-sociaux',
+      'community-management': 'contenu-reseaux-sociaux',
+      'site-web': 'site-web-seo',
+      seo: 'site-web-seo',
+    }
+    const hash = LEGACY[raw] ?? raw
     if (!hash || !SERVICES.some((s) => s.id === hash)) return
     setOpenId(hash)
     setTimeout(() => {

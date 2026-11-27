@@ -7,10 +7,10 @@ import { clients } from '@/data/clients'
 export const metadata: Metadata = {
   alternates: { canonical: '/services' },
   title: 'Services de communication à Bordeaux | Sea More Agency',
-  description: 'Stratégie de communication, création de contenu, community management, branding, site web et SEO : découvrez mes services d\'agence de communication à Bordeaux.',
+  description: 'Stratégie de communication, contenu & réseaux sociaux, branding, site web et SEO : découvrez mes services d\'agence de communication à Bordeaux.',
   openGraph: {
     title: 'Services de communication à Bordeaux | Sea More Agency',
-    description: 'Stratégie de communication, création de contenu, community management, branding, site web et SEO : découvrez mes services d\'agence de communication à Bordeaux.',
+    description: 'Stratégie de communication, contenu & réseaux sociaux, branding, site web et SEO : découvrez mes services d\'agence de communication à Bordeaux.',
     siteName: 'Sea More Agency',
     locale: 'fr_FR',
     type: 'website',

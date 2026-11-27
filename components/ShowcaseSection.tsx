@@ -11,6 +11,7 @@ interface Props {
   beforeImage?: string
   afterImage?: string
   beforeAfterAspect?: '16/9' | '4/5'
+  placeholders?: boolean  // complète la grille avec des cases vides (défaut : oui)
 }
 
 function getYoutubeId(url: string): string | null {
@@ -41,6 +42,8 @@ function VideoCard({ item, index }: { item: ClientMedia; index: number }) {
       ) : item.src && item.src.startsWith('/') ? (
         <video
           src={item.src}
+          poster={item.poster}
+          preload={item.poster ? 'none' : 'metadata'}
           className="absolute inset-0 w-full h-full object-cover"
           controls
           playsInline
@@ -101,7 +104,7 @@ function VideoPlaceholder() {
   )
 }
 
-export default function ShowcaseSection({ media, beforeImage, afterImage, beforeAfterAspect }: Props) {
+export default function ShowcaseSection({ media, beforeImage, afterImage, beforeAfterAspect, placeholders = true }: Props) {
   const hasBeforeAfter = !!(beforeImage && afterImage)
   const allVideos = media.filter((m) => m.kind === 'video' || m.src)
   const videos = allVideos.slice(0, hasBeforeAfter ? 2 : 4)
@@ -126,7 +129,7 @@ export default function ShowcaseSection({ media, beforeImage, afterImage, before
           {videos.map((item, i) => (
             <VideoCard key={i} item={item} index={i} />
           ))}
-          {videos.length < 4 && Array.from({ length: 4 - videos.length }).map((_, i) => (
+          {placeholders && videos.length < 4 && Array.from({ length: 4 - videos.length }).map((_, i) => (
             <VideoPlaceholder key={`placeholder-${i}`} />
           ))}
         </div>

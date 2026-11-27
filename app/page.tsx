@@ -99,14 +99,12 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 sm:grid-flow-col gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 sm:grid-flow-col gap-3 sm:gap-4">
           {[
             { num: '01', title: 'Branding & Identité Visuelle', desc: 'Une image de marque forte, cohérente et immédiatement reconnaissable.', anchor: 'branding' },
             { num: '02', title: 'Stratégie de Communication', desc: 'Une direction claire pour que chaque action de communication serve un objectif précis.', anchor: 'strategie' },
-            { num: '03', title: 'Création de Contenu', desc: "Des vidéos qui captent l'attention et racontent ton histoire.", anchor: 'contenu-video' },
-            { num: '04', title: 'Community Management', desc: "Je gère tes réseaux pour que ta communauté grandisse sans que tu t'en occupes.", anchor: 'community-management' },
-            { num: '05', title: 'Création de Site Web', desc: 'Un site moderne, rapide et pensé pour convertir tes visiteurs en clients.', anchor: 'site-web' },
-            { num: '06', title: 'SEO & Visibilité en ligne', desc: 'Être trouvé sur Google par les bonnes personnes, au bon moment.', anchor: 'seo' },
+            { num: '03', title: 'Contenu & Réseaux Sociaux', desc: "Des contenus qui captent l'attention et des réseaux qui font grandir ta communauté.", anchor: 'contenu-reseaux-sociaux' },
+            { num: '04', title: 'Site Web & SEO', desc: 'Un site moderne, pensé pour convertir et pour être trouvé sur Google.', anchor: 'site-web-seo' },
           ].map(({ num, title, desc, anchor }) => (
             <div
               key={anchor}

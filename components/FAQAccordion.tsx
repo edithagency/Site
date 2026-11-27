@@ -7,7 +7,7 @@ const FAQS = [
   {
     id: 'services',
     question: 'Quels services proposes-tu ?',
-    answer: "Branding, social media, création de contenu vidéo, stratégie de communication, création de site web et SEO. Je m'adapte à tes besoins, à ton univers et à ton budget.",
+    answer: "Branding, stratégie de communication, contenu & réseaux sociaux (photo, vidéo, community management), création de site web et SEO. Je m'adapte à tes besoins, à ton univers et à ton budget.",
   },
   {
     id: 'localisation',
