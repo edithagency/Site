@@ -55,11 +55,9 @@ export default function ProjectsCarousel({ clients }: Props) {
             >
               <Link href={`/projets/${client.slug}`} className="group block w-[280px] md:w-[320px]">
                 {/* Card image */}
-                <motion.div
-                  className="relative overflow-hidden rounded-xl mb-4 bg-brand-deep"
+                <div
+                  className="relative overflow-hidden rounded-xl mb-4 bg-brand-deep transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                   style={{ height: i % 3 === 0 ? '400px' : i % 3 === 1 ? '340px' : '380px' }}
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                   {client.cardImage ? (
                     <Image
@@ -67,28 +65,16 @@ export default function ProjectsCarousel({ clients }: Props) {
                       alt={client.name}
                       fill
                       sizes="(max-width: 768px) 280px, 320px"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105 crisp-image"
+                      className="object-cover crisp-image"
                     />
                   ) : (
-                    <div className={`absolute inset-0 transition-transform duration-500 group-hover:scale-105 ${
+                    <div className={`absolute inset-0 ${
                       i % 4 === 0 ? 'bg-brand-mid/60' :
                       i % 4 === 1 ? 'bg-brand-deep/70' :
                       i % 4 === 2 ? 'bg-brand-mid/40' :
                       'bg-brand-deep/50'
                     }`} />
                   )}
-
-                  {/* Overlay sombre au hover */}
-                  <div className="absolute inset-0 bg-brand-deep/25 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center">
-                    <motion.span
-                      className="text-brand-cream text-3xl"
-                      initial={{ y: 8, opacity: 0 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.25 }}
-                    >
-                      →
-                    </motion.span>
-                  </div>
 
                   {/* Année */}
                   <span className="absolute top-4 right-4 font-poppins text-[10px] text-white tracking-widest uppercase">
@@ -100,10 +86,10 @@ export default function ProjectsCarousel({ clients }: Props) {
                       {client.location}
                     </span>
                   )}
-                </motion.div>
+                </div>
 
                 <p className="eyebrow mb-1">{client.category}</p>
-                <p className="text-brand-deep text-xl group-hover:text-brand-mid transition-colors duration-200" style={{ fontFamily: "'The Seasons', serif", fontWeight: 400 }}>
+                <p className="text-brand-deep text-xl" style={{ fontFamily: "'The Seasons', serif", fontWeight: 400 }}>
                   {client.name}
                 </p>
               </Link>
