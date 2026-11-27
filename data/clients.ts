@@ -288,6 +288,45 @@ export const clients: Client[] = [
   },
   // ↓ Nouveaux clients : à ajouter ici (après Prod Daiki)
   {
+    slug: 'caroline-baroche-safti',
+    name: 'Caroline Baroche · Safti',
+    intro: "Caroline Baroche, agente immobilière Safti à Bordeaux.",
+    sector: 'Immobilier',
+    category: 'Contenu & Réseaux sociaux',
+    year: 'depuis 2026',
+    description: "Accompagnement de Caroline Baroche, agente immobilière du réseau Safti à Bordeaux : stratégie de communication et création de contenus pour ses réseaux sociaux.",
+    missions: [
+      {
+        title: 'Stratégie de communication',
+        summary: "Positionnement et ligne éditoriale pour développer la visibilité de Caroline à Bordeaux et donner confiance aux vendeurs comme aux acheteurs.",
+      },
+      {
+        title: 'Contenu & réseaux sociaux',
+        summary: "Tournage et montage de vidéos courtes pour Instagram : des formats incarnés qui mettent en avant son expertise, ses conseils et sa personnalité.",
+        link: { label: 'Instagram', url: 'https://www.instagram.com/carolinebaroche_immobilier/' },
+        content: [
+          { kind: 'photo', src: '/images/clients/caroline-safti-bureau.jpg', alt: "Caroline Baroche au téléphone à son bureau" },
+          { kind: 'photo', src: '/images/clients/caroline-safti-agenda.jpg', alt: "L'agenda de Caroline Baroche, agente immobilière Safti" },
+          { kind: 'photo', src: '/images/clients/caroline-safti-parc.jpg', alt: "Caroline Baroche dans un parc à Bordeaux" },
+        ],
+      },
+    ],
+    objectives: [],
+    cardImage: '/images/clients/caroline-safti-card.jpg',
+    coverImage: '/images/clients/caroline-safti-card.jpg',
+    heroImage: '/images/clients/caroline-safti-hero.jpg',
+    gallery: [],
+    tags: ['Stratégie', 'Contenu & Réseaux Sociaux'],
+    discovery: { label: 'Découvrir', url: 'https://www.instagram.com/carolinebaroche_immobilier/', icon: 'instagram' as const },
+    location: 'Bordeaux, France',
+    media: [
+      { kind: 'video', youtubeId: 'HB-MV7WWCK4', label: 'Caroline Baroche · Safti', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: '_SisQMVGzVs', label: 'Caroline Baroche · Safti', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'v3DHCmX6fx8', label: 'Caroline Baroche · Safti', location: 'Bordeaux, France' },
+      { kind: 'video', youtubeId: 'bFzhzkeARlA', label: 'Caroline Baroche · Safti', location: 'Bordeaux, France' },
+    ],
+  },
+  {
     slug: 'itineraire-sur-mesure',
     intro: "Itinéraire Sur Mesure, des voyages pensés sur mesure.",
     sector: "Voyage sur mesure",
